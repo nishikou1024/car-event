@@ -25,20 +25,29 @@ $(function () {
             var position = $target.offset().top - 10;
             $('html, body').stop().animate({ scrollTop: position }, 700);
         } else {
-            // --- スマホ：【最終解決】scrollIntoViewハック ---
+            // --- スマホ：ガクつきを抑えた切り替え ---
 
-            // 1. まずコンテンツを切り替える（非表示にしてから表示）
-            $('section.wrapper').removeClass('active-section');
-            $target.addClass('active-section');
+            // 1. 今のスクロール位置を一旦変数に保存（動かさないため）
+            var currentScroll = $(window).scrollTop();
 
-            // 2. ブラウザが勝手にスクロール位置をズラすのを待ってから（100ms）、
-            // 「メニューの場所を画面の一番上に持ってこい」と強制命令を出す
-            setTimeout(function() {
-                $menu[0].scrollIntoView({
-                    behavior: 'instant', // 瞬間移動
-                    block: 'start'       // 画面の「上」に合わせる
+            // 2. セクションを切り替える（この瞬間、高さが変わって画面がガタつく可能性がある）
+            $('section.wrapper').hide().removeClass('active-section');
+            $target.show().addClass('active-section');
+
+            // 3. ブラウザが勝手に位置を補正しようとするのを防ぐため、
+            // 「今の位置」を維持したまま、即座に目的地へジャンプさせる
+            
+            // 目的地：メインビジュアルの高さ（＝タブメニューが一番上にくる位置）
+            var destination = $('.mainvisual').outerHeight();
+
+            // requestAnimationFrameを使うと、ブラウザの描画タイミングに合わせられるので
+            // setTimeoutよりさらに滑らか（ガクつきにくい）になります
+            requestAnimationFrame(function() {
+                window.scrollTo({
+                    top: destination,
+                    behavior: 'instant' // 余計なアニメーションをさせず、一瞬で切り替える
                 });
-            }, 100); // 0.1秒待つのがミソです
+            });
         }
     });
 });
