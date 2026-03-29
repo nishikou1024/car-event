@@ -535,3 +535,845 @@ a {
         gap: 24px;
     }
 }
+
+
+/*----↓↓Takahiroが入力したcss-----*/
+
+/* 基本設定 */
+body {
+    margin: 0;
+    background-color: #1e1e1e;
+    color: #ebeaea;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+
+
+/*wrapper共通*/
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px;
+    box-sizing: border-box;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+/* --- ラベル（左側に短い線があるタイプ） --- */
+.section-header .label-line {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #e60012;
+    /* 基本は赤文字 */
+    padding-left: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header .label-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #e60012;
+    /* 基本は赤い線 */
+}
+
+/* --- メインビジュアル --- */
+.mainvisual {
+    width: 100%;
+    height: 100vh;
+    /* 画面いっぱいに表示 */
+    min-height: 600px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../img/event-background.jpg');
+    /* お手持ちのヤリスGR画像 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #ebeaea;
+    overflow: hidden;
+}
+
+/* ユーザー指定の共通余白 */
+.hero-content.wrapper {
+    padding: 80px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- SPECIAL ACTIVITIES のラベル装飾 --- */
+.mainvisual .label-line {
+    color: #ebeaea;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 6px 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 40px;
+    position: relative;
+    line-height: 1.2;
+    z-index: 2;
+}
+
+/* ★右端まで突き抜けさせる赤い帯 */
+.mainvisual .label-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 1000px;
+    left: -30px;
+    height: 100%;
+    background-color: #e60012;
+    transform: skewX(-20deg);
+    z-index: -1;
+
+}
+
+
+
+.top-title {
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    font-size: 84px;
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+}
+
+.text-red {
+    color: #e60012;
+}
+
+.introduction-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: bold;
+    max-width: 600px;
+}
+
+/* --- タブメニュー --- */
+.tab-menu {
+    display: flex;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    /* スクロール時に上部に固定 */
+    top: 0;
+    z-index: 100;
+}
+
+.tab-menu a {
+    flex: 1;
+    text-align: center;
+    padding: 25px 0;
+    color: #888;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.5s;
+    border-right: 1px solid #222;
+}
+
+.tab-menu a:hover {
+    color: #ebeaea;
+    background-color: #222;
+}
+
+/* アクティブ（現在地）のスタイル */
+.tab-menu a.active {
+    color: #ebeaea;
+    background-color: #2a2a2a;
+    position: relative;
+}
+
+.tab-menu a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #e60012;
+}
+
+/* レスポンシブ */
+/* --- 共通：アニメーション設定 --- */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- スマホ版（768px以下）：切り替え制御 --- */
+@media screen and (max-width: 768px) {
+    .top-title {
+        font-size: 48px;
+    }
+
+    .hero-content.wrapper {
+        padding: 30px;
+        left: 40px;
+    }
+
+    .mainvisual .label-line::before {
+        width: 600px;
+    }
+
+    .tab-menu a {
+        font-size: 10px;
+        padding: 15px 0;
+    }
+
+    /* 非アクティブなセクションは隠す */
+    section.wrapper {
+        display: none;
+        opacity: 0;
+        /* 重要：中身が空でも画面半分くらいの高さは維持させる（位置飛び防止） */
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    section.wrapper.active-section {
+        display: block;
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+}
+
+/* --- PC版（769px以上）：全表示 --- */
+@media screen and (min-width: 769px) {
+    section.wrapper {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
+/* --- タブ共通：アクティブスタイル --- */
+.tab-menu a.active {
+    border-bottom: 2px solid #000;
+    font-weight: bold;
+}
+
+/*セクションヘッダー*/
+.section-header {
+    margin-bottom: 40px;
+}
+
+/* --- GR AREA --- */
+#gr-area {
+    background-color: #1e1e1e;
+    /* Figmaの背景色 */
+    color: #f9f9f9;
+    /* セクション自体のpaddingはwrapperで行うため0に */
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+
+
+#gr-area .label-line {
+    background: none;
+    /* メインビジュアルの赤い背景を消す */
+    color: #e60012;
+    /* 文字色を赤にする */
+    padding: 0 0 0 50px;
+    /* 左側に線のスペースを作る */
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+
+}
+
+/* 左側の赤い短い線 */
+#gr-area .label-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #e60012;
+    transform: translateY(-50%);
+}
+
+/* メインビジュアル用の突き抜ける線を消す */
+#gr-area .label-line::after {
+    display: none;
+}
+
+#gr-area .section-title {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+#gr-area .section-header .message {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* --- ギャラリー（カードグリッド） --- */
+#gr-area .gallary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    /* カード間に少し隙間をあけると、80pxの余白と相性が良いです */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#gr-area .grid-item {
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s;
+}
+
+#gr-area .grid-item:hover {
+    background-color: #252525;
+}
+
+/* 写真部分 */
+#gr-area .gallary .photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+#gr-area .gallary .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.grid-item:hover .photo img {
+
+    transform: scale(1.05);
+}
+
+/* --- カード内テキストコンテンツ --- */
+#gr-area .grid-item .content {
+    padding: 25px 20px;
+    flex-grow: 1;
+    border-top: 4px solid #e60012;
+}
+
+#gr-area .gallary .grid-item .category {
+    color: #e60012;
+    font-size: 11px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+}
+
+#gr-area .gallary .grid-item .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: #ebeaea;
+}
+
+#gr-area .gallary .grid-item .message {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #aaaaaa;
+    margin: 0;
+}
+
+/*GR AREA  responsive*/
+@media (max-width: 768px) {
+    #gr-area .gallary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /*wrapper共通*/
+    .wrapper {
+        padding: 40px 20px;
+    }
+
+    /* スマホでは余白を絞らないとコンテンツが小さくなりすぎます */
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+
+
+/*KIDS&FAMILY*/
+/* --- KIDS & FAMILY（白背景）の固有スタイル --- */
+#kids-family {
+    background-color: #f9f9f9;
+    color: #1e1e1e;
+}
+
+#kids-family .label-line {
+    color: #e60012;
+    /* 文字色を赤にする */
+    padding: 0 0 0 50px;
+    /* 左側に線のスペースを作る */
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+}
+
+/* 左側の赤い短い線 */
+#kids-family .label-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #e60012;
+    transform: translateY(-50%);
+}
+
+
+#kids-family .section-title {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+#kids-family .section-header .message {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+
+#kids-family ul {
+    display: flex;
+    gap: 20px;
+    /* カード間の隙間 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- 各アイテム（カード全体） --- */
+#kids-family .grid-item {
+    flex: 1;
+    /* 均等な幅で並べる */
+    display: flex;
+    /* これで画像とテキストを横並びに */
+    background-color: #ebeaea;
+    align-items: stretch;
+    /* 画像とテキストの高さを揃える */
+    overflow: hidden;
+    /* 画像拡大時のはみ出しをカット */
+}
+
+/* --- 画像エリア（左側） --- */
+#kids-family .photo {
+    flex: 0 0 200px;
+    /* 画像の横幅を200pxに固定 */
+    padding: 10px;
+    background: none;
+    border: none !important;
+    /* ★枠線の重複を防止 */
+    overflow: hidden;
+    /* 拡大アニメーションのマスク */
+}
+
+#kids-family .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 枠に合わせてきれいに収める */
+    display: block;
+    transition: transform 0.5s ease;
+    /* ★滑らかな拡大を実現 */
+    border-radius: 2%;
+}
+
+/* カードにホバーした時に画像を拡大 */
+#kids-family li:hover .photo img {
+    transform: scale(1.05);
+}
+
+/* --- テキストエリア（右側） --- */
+#kids-family li .content {
+    flex: 1;
+    /* 残りの幅をすべて使用 */
+    padding: 30px 10px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 上下中央揃え */
+}
+
+/* テキストのスタイル調整 */
+#kids-family li .content .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    color: #1a1a1a;
+}
+
+#kids-family li .content .message {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 0;
+}
+
+/*KIDS&FAMILY responsive*/
+@media (max-width: 768px) {
+    #kids-family .grid-item {
+        flex-direction: column;
+        /* スマホでは画像上・テキスト下の縦並び */
+    }
+
+    #kids-family .photo {
+        width: 100%;
+        height: 200px;
+        flex: none;
+    }
+}
+
+/* --- FOOD & MARCHE --- */
+#food-marche {
+    background-color: #e60012;
+    /* 背景を赤に */
+    color: #ebeaea;
+    /* 全体の文字を白に */
+}
+
+
+/* ★赤背景の中のラベルと線を「白」に上書き */
+#food-marche .label-line {
+    color: #ebeaea;
+    /* 文字色を赤にする */
+    padding: 0 0 0 50px;
+    /* 左側に線のスペースを作る */
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+}
+
+/* 左側の赤い短い線 */
+#food-marche .label-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #ebeaea;
+    transform: translateY(-50%);
+}
+
+
+#food-marche .section-title {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+#food-marche .section-header .message {
+    font-size: 1rem;
+    color: #ebeaea;
+}
+
+
+#food-marche .food-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* 左側：画像ギャラリー */
+#food-marche .food-content .food-gallery {
+    flex: 2;
+    display: flex;
+    gap: 20px;
+}
+
+#food-marche .food-content .food-item {
+    flex: 1;
+    position: relative;
+    list-style: none;
+
+}
+
+#food-marche .food-content .food-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.food-content .food-item:first-child img {
+    object-position: right;
+}
+
+
+.food-content .food-item:hover img {
+    transform: scale(1.1);
+}
+
+.food-content .item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 30px 20px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    width: 100%;
+}
+
+/* 右側：インフォパネル */
+.food-info-panel {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* 背景を少し暗くして文字を読みやすく */
+    padding: 40px;
+}
+
+.panel-sub {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.panel-main {
+    font-size: 2rem;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.shop-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.shop-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.shop-list .name {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.shop-list .desc {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.zone-tag {
+    background: #ebeaea;
+    color: #e60012;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 3px 10px;
+}
+
+/* ボタン：台形デザイン */
+.map-button {
+    display: block;
+    background: #ebeaea;
+    color: #e60012;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+    transition: 0.3s;
+}
+
+.map-button:hover {
+    background: #1a1a1a;
+    color: #ebeaea;
+}
+
+/*FOOD&MARCHE responsive*/
+@media screen and (max-width: 1024px) {
+    .food-content {
+        flex-direction: column;
+    }
+
+    .food-gallery {
+        width: 100%;
+    }
+
+    .food-info-panel {
+        width: 100%;
+    }
+
+    #food-marche .section-title {
+        font-size: 48px;
+    }
+}
+
+
+
+/*NIGHT EVENT*/
+#night-event {
+    background-color: #1e1e1e;
+    /* 真っ黒に近い背景 */
+    color: #fff;
+    padding-bottom: 120px;
+}
+
+#night-event .label-line {
+    background: none;
+    /* メインビジュアルの赤い背景を消す */
+    color: #e60012;
+    /* 文字色を赤にする */
+    padding: 0 0 0 50px;
+    /* 左側に線のスペースを作る */
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+
+}
+
+/* 左側の赤い短い線 */
+#night-event .label-line::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 3px;
+    background-color: #e60012;
+    transform: translateY(-50%);
+}
+
+
+#night-event .section-title {
+    font-size: 4rem;
+    font-family: 'Oswald', sans-serif;
+    color: #ebeaea;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+#night-event .message {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 60px;
+}
+
+/* --- 3枚並びのグリッド --- */
+.night-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.night-item .photo {
+    position: relative;
+    /* 文字を画像の上に重ねるため */
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    /* 縦長の比率 */
+    overflow: hidden;
+    background-color: #000;
+}
+
+.night-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* 文字を見やすくするため画像を少し暗く */
+    transition: 0.5s ease;
+}
+
+/* ホバー時に画像を明るく・拡大 */
+.night-item:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* --- 画像内のテキスト --- */
+.night-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    /* 下を暗くするグラデ */
+    box-sizing: border-box;
+}
+
+.night-content .title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ebeaea;
+}
+
+.night-content .desc {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/*NIGHT EVENT responsive */
+@media (max-width: 768px) {
+    .night-gallery {
+        grid-template-columns: 1fr;
+        /* 縦1列に */
+    }
+
+    #night-event .section-title {
+        font-size: 2.5rem;
+    }
+}
