@@ -25,29 +25,36 @@ $(function () {
             var position = $target.offset().top - 10;
             $('html, body').stop().animate({ scrollTop: position }, 700);
         } else {
-            // --- スマホ：ガクつきを抑えた切り替え ---
+            // --- スマホ：タブメニューを最上部に固定して切り替える ---
 
-            // 1. 今のスクロール位置を一旦変数に保存（動かさないため）
-            var currentScroll = $(window).scrollTop();
-
-            // 2. セクションを切り替える（この瞬間、高さが変わって画面がガタつく可能性がある）
+            // 1. セクションを切り替える
             $('section.wrapper').hide().removeClass('active-section');
             $target.show().addClass('active-section');
 
-            // 3. ブラウザが勝手に位置を補正しようとするのを防ぐため、
-            // 「今の位置」を維持したまま、即座に目的地へジャンプさせる
-            
-            // 目的地：メインビジュアルの高さ（＝タブメニューが一番上にくる位置）
-            var destination = $('.mainvisual').outerHeight();
+            // 2. ヘッダーがないので高さは 0
+            var headerHeight = 0;
 
-            // requestAnimationFrameを使うと、ブラウザの描画タイミングに合わせられるので
-            // setTimeoutよりさらに滑らか（ガクつきにくい）になります
-            requestAnimationFrame(function() {
+            // 3. タブメニューの固定位置を最上部(0)に設定
+            $('.tab-menu').css({
+                'position': 'sticky',
+                'top': '0px',
+                'z-index': '99'
+            });
+
+            // 4. 目的地を「メインビジュアルの高さ」ピッタリにする
+            var mainVisualHeight = $('.mainvisual').outerHeight();
+            
+            // タブが最上部に張り付く瞬間は、メインビジュアルが完全に隠れた位置です
+            // 確実に張り付かせるために、少しだけプラス（+1〜10px程度）してもOKです
+            var destination = mainVisualHeight;
+
+            // 5. 即座にジャンプ
+            setTimeout(function() {
                 window.scrollTo({
                     top: destination,
-                    behavior: 'instant' // 余計なアニメーションをさせず、一瞬で切り替える
+                    behavior: 'instant'
                 });
-            });
+            }, 0);
         }
     });
 });
