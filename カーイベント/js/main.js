@@ -25,20 +25,36 @@ $(function () {
             var position = $target.offset().top - 10;
             $('html, body').stop().animate({ scrollTop: position }, 700);
         } else {
-            // --- スマホ：【最終解決】scrollIntoViewハック ---
+            // --- スマホ：タブメニューを最上部に固定して切り替える ---
 
-            // 1. まずコンテンツを切り替える（非表示にしてから表示）
-            $('section.wrapper').removeClass('active-section');
-            $target.addClass('active-section');
+            // 1. セクションを切り替える
+            $('section.wrapper').hide().removeClass('active-section');
+            $target.show().addClass('active-section');
 
-            // 2. ブラウザが勝手にスクロール位置をズラすのを待ってから（100ms）、
-            // 「メニューの場所を画面の一番上に持ってこい」と強制命令を出す
+            // 2. ヘッダーがないので高さは 0
+            var headerHeight = 0;
+
+            // 3. タブメニューの固定位置を最上部(0)に設定
+            $('.tab-menu').css({
+                'position': 'sticky',
+                'top': '0px',
+                'z-index': '99'
+            });
+
+            // 4. 目的地を「メインビジュアルの高さ」ピッタリにする
+            var mainVisualHeight = $('.mainvisual').outerHeight();
+            
+            // タブが最上部に張り付く瞬間は、メインビジュアルが完全に隠れた位置です
+            // 確実に張り付かせるために、少しだけプラス（+1〜10px程度）してもOKです
+            var destination = mainVisualHeight;
+
+            // 5. 即座にジャンプ
             setTimeout(function() {
-                $menu[0].scrollIntoView({
-                    behavior: 'instant', // 瞬間移動
-                    block: 'start'       // 画面の「上」に合わせる
+                window.scrollTo({
+                    top: destination,
+                    behavior: 'instant'
                 });
-            }, 100); // 0.1秒待つのがミソです
+            }, 0);
         }
     });
 });
