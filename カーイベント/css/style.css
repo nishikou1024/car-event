@@ -839,7 +839,7 @@ a {
 }
 
 /* --- ギャラリー（カードグリッド） --- */
-#gr-area .gallary {
+#gr-area .gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px; /* カード間に少し隙間をあけると、80pxの余白と相性が良いです */
@@ -860,13 +860,13 @@ a {
 }
 
 /* 写真部分 */
-#gr-area .gallary .photo {
+#gr-area .gallery .photo {
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
 }
 
-#gr-area .gallary .photo img {
+#gr-area .gallery .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -886,7 +886,7 @@ a {
     border-top: 4px solid #e60012;
 }
 
-#gr-area .gallary .grid-item .category {
+#gr-area .gallery .grid-item .category {
     color: #e60012;
     font-size: 11px;
     font-weight: bold;
@@ -895,7 +895,7 @@ a {
     letter-spacing: 0.1em;
 }
 
-#gr-area .gallary .grid-item .title {
+#gr-area .gallery .grid-item .title {
     font-size: 18px;
     font-weight: bold;
     line-height: 1.4;
@@ -903,7 +903,7 @@ a {
     color: #ebeaea;
 }
 
-#gr-area .gallary .grid-item .message {
+#gr-area .gallery .grid-item .message {
     font-size: 13px;
     line-height: 1.6;
     color: #aaaaaa;
@@ -916,7 +916,7 @@ a {
         display: block;
     }
 
-    #gr-area .gallary {
+    #gr-area .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 
