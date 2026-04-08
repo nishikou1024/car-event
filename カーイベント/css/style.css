@@ -758,56 +758,142 @@ a {
     transform: scale(1.03);
 }
 
+/*footer*/
+/* --- Footer Base --- */
 .footer {
     background: #000000;
     border-top: 4px solid #ff0000;
-    padding: 44px 0 24px;
+    padding: 60px 0 30px; /* 少し余裕を持たせる */
+    color: #ffffff;
+}
+
+.footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .footer__top {
     display: flex;
     justify-content: space-between;
-    gap: 48px;
+    align-items: flex-start; 
+    gap: 60px;
 }
 
+/* --- Brand & SNS --- */
 .footer__brand {
-    max-width: 320px;
+    max-width: 350px;
+}
+
+.footer__logo-img {
+    height: 40px; /* ロゴのサイズ調整 */
+    width: auto;
 }
 
 .footer__text {
     color: #cfcfcf;
     font-size: 14px;
-    margin-top: 20px;
+    line-height: 1.8;
+    margin-top: 24px;
 }
 
+/* SNS共通設定 */
+.footer__sns {
+    display: flex;
+    gap: 30px; /* アイコン同士の間隔 */
+    margin-top: 32px;
+}
+
+.sns-link {
+    display: flex;
+    flex-direction: column; /* 縦並びにする */
+    align-items: center;    /* 中央寄せ */
+    gap: 10px;              /* アイコンと文字の間隔 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* アイコンのサイズ */
+.sns-link i {
+    font-size: 24px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* ★カーレース風フォントの設定 */
+.sns-label {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: bold;           /* 極太にして力強さを出す */
+    letter-spacing: 0.1em;      /* 文字間隔を広げて高級感を出す */
+    font-family: 'Arial Black', 'sans-serif'; /* 角張った太いフォント */
+    font-style: italic;         /* 斜体にしてスピード感を出す */
+    transition: color 0.3s ease;
+}
+
+/* --- ホバー演出 --- */
+.sns-link:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* YouTubeなら赤、LINEなら緑のように個別に光らせる */
+.sns-link.--x:hover i, .sns-link.--x:hover .sns-label { color: #888888; }
+.sns-link.--instagram:hover i, .sns-link.--instagram:hover .sns-label { color: #e4405f; }
+.sns-link.--youtube:hover i, .sns-link.--youtube:hover .sns-label { color: #ff0000; }
+.sns-link.--line:hover i, .sns-link.--line:hover .sns-label { color: #06c755; }
+
+/* 光の輪（グロー効果） */
+.sns-link:hover i {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* --- Links Area --- */
 .footer__links {
     display: flex;
-    gap: 56px;
+    gap: 80px;
+    margin-top: 68px;
 }
 
 .footer__col {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
+}
+
+.footer__col-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #888888; /* 見出しは少し暗くしてメリハリを出す */
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
 }
 
 .footer__col a {
     color: #ffffff;
-    font-size: 12px;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease;
 }
 
+.footer__col a:hover {
+    color: #f36969; /* ホバーで赤く光る */
+}
+
+/* --- Bottom --- */
 .footer__bottom {
-    margin-top: 26px;
-    padding-top: 18px;
+    margin-top: 50px;
+    padding-top: 20px;
     border-top: 1px solid #222222;
+    text-align: left;
 }
 
 .footer__bottom p {
-    color: #888888;
-    font-size: 11px;
+    color: #666666;
+    font-size: 10px;
 }
+
 
 @media (max-width: 768px) {
     .header {
@@ -965,6 +1051,8 @@ a {
         text-align: center;
         font-size: 68px;
         color: rgba(0, 0, 0, 0.05);
+        top: 18px;
+        font-size: 70px;
         line-height: 1;
         white-space: nowrap;
         pointer-events: none;
@@ -986,6 +1074,7 @@ a {
 
     .concept .section-label {
         font-size: 12px;
+        margin-top: 17px;
         margin-bottom: 10px;
         letter-spacing: 0.08em;
     }
@@ -1222,11 +1311,18 @@ a {
 
     .footer__top {
         flex-direction: column;
+        align-items: flex-start; /* スマホでは左寄せに戻す */
+        gap: 50px;
     }
-
+    
     .footer__links {
-        flex-direction: column;
-        gap: 24px;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    
+    .footer__col {
+        min-width: 140px;
     }
 }
 
@@ -1490,6 +1586,18 @@ a {
     margin-bottom: 40px;
 }
 
+.section-title {
+    color: #f9f9f9;
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+.section-header .message {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
 /* --- GR AREA --- */
 #gr-area {
     background-color: #1e1e1e;
@@ -1544,7 +1652,6 @@ a {
 }
 
 #gr-area .section-header .message {
-    font-size: 1rem;
     opacity: 0.8;
 }
 
@@ -1615,7 +1722,7 @@ a {
 }
 
 #gr-area .gallery .grid-item .message {
-    font-size: 13px;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: #aaaaaa;
     margin: 0;
@@ -1623,23 +1730,22 @@ a {
 
 /*GR AREA  responsive*/
 @media (max-width: 768px) {
-    #gr-area .section-title br {
-        display: block;
-    }
-
-    #gr-area .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     /*wrapper共通*/
     .wrapper {
         padding: 40px 20px;
     }
 
-    /* スマホでは余白を絞らないとコンテンツが小さくなりすぎます */
-    .section-title {
-        font-size: 2rem;
+
+    #gr-area .section-title br {
+        display: block;
     }
+
+    #gr-area .gallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+
 }
 
 
@@ -1681,14 +1787,12 @@ a {
 
 
 #kids-family .section-title {
-    font-size: 3rem;
-    font-family: 'Oswald', sans-serif;
-    margin-bottom: 10px;
+    color: #1e1e1e
 }
 
 #kids-family .section-header .message {
-    font-size: 1rem;
-    opacity: 0.8;
+    color: #1e1e1e;
+    font-weight: bold;
 }
 
 
@@ -1829,7 +1933,6 @@ a {
 
 
 #food-marche .section-title {
-    font-size: 3rem;
     font-family: 'Oswald', sans-serif;
     margin-bottom: 10px;
 }
@@ -1837,6 +1940,8 @@ a {
 #food-marche .section-header .message {
     font-size: 1rem;
     color: #ebeaea;
+    opacity: 1;
+    font-weight: 500;
 }
 
 
@@ -2030,10 +2135,6 @@ a {
 
 
 #night-event .section-title {
-    font-size: 4rem;
-    font-family: 'Oswald', sans-serif;
-    color: #ebeaea;
-    margin-bottom: 20px;
     letter-spacing: 2px;
 }
 
