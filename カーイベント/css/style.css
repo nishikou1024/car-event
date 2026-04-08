@@ -1045,11 +1045,17 @@ a {
     }
 
     .concept__bg-text {
+        top: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 68px;
+        color: rgba(0, 0, 0, 0.05);
         top: 18px;
         font-size: 70px;
         line-height: 1;
         white-space: nowrap;
-        opacity: 1;
+        pointer-events: none;
     }
 
     .concept__inner {
@@ -1091,10 +1097,9 @@ a {
     }
 
     .concept__image-wrap {
-        width: 78%;
-        max-width: 320px;
+        width: 70%;
+        max-width: 290px;
         margin: 0 auto;
-        position: relative;
     }
 
     .concept__image-box {
@@ -1120,20 +1125,92 @@ a {
         font-size: 34px;
     }
 
+    .contents {
+        padding: 72px 0;
+    }
+
+    .contents__inner {
+        padding: 0 16px;
+    }
+
+    .contents__lead {
+        font-size: 14px;
+        margin-top: 10px;
+        line-height: 1.8;
+    }
+
     .contents__grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 24px;
     }
+
+    .contents__item {
+        height: 200px;
+        /* ←ここ重要（今より低くする） */
+        border-radius: 6px;
+    }
+
+    .contents__label {
+        font-size: 10px;
+        padding: 6px 8px;
+        bottom: 70px;
+        left: 12px;
+    }
+
+    .contents__text {
+        font-size: 16px;
+        left: 12px;
+        bottom: 12px;
+        line-height: 1.3;
+    }
+
+    .contents__overlay {
+        display: none;
+    }
+
+    .contents__item:hover {
+        transform: none;
+    }
+
+    .contents__item:hover img {
+        transform: none;
+    }
+
+    .contents__item:hover .contents__overlay {
+        opacity: 0;
+    }
+
+    .contents__item:hover .contents__btn {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .access {
+        padding: 60px 0;
+    }
+
+    .access__map {
+        margin-bottom: 16px;
+    }
+
+    .access__actions {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
 
     .access__info {
         grid-template-columns: 1fr;
     }
 
     .access__box h3 {
-        font-size: 22px;
+        font-size: 20px;
+        line-height: 1.3;
     }
 
     .schedule {
-        padding: 80px 0 88px;
+        padding: 60px 0;
     }
 
     .schedule__inner {
@@ -1201,19 +1278,35 @@ a {
         line-height: 1.7;
     }
 
+    .sponsor{
+        padding: 40px 0 60px;
+    }
 
     .sponsor__grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 20px;
     }
 
     .sponsor__item {
-        height: 90px;
-        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 16px;
+        border-radius: 8px;
+
+        background: rgba(255, 255, 255, 0.03);
+        transition: 0.3s;
+    }
+
+    .sponsor__item:active,
+    .sponsor__item:hover {
+        border: 1px solid #e60023;
     }
 
     .sponsor__item img {
         max-height: 40px;
+        height: auto;
     }
 
     .footer__top {
