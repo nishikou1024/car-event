@@ -1,49 +1,66 @@
-/*---イベントサイト JS---*/
+/*--- イベントサイト JS ---*/
 
 $(function () {
-    // リロード時の位置復元を完全に殺す
+    // リロード時の位置復元を無効化（ブラウザの自動スクロール干渉を防ぐ）
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
 
+    /* =========================
+        1. タブメニュー切り替え
+    ========================= */
     $('.tab-menu a').on('click', function (e) {
         e.preventDefault();
 
         var targetId = $(this).attr('href');
         var $target = $(targetId);
         var windowWidth = $(window).width();
-        var $menu = $('.tab-menu'); // スクロールさせたい基準点
 
         if (!$target.length) return;
 
-        // タブのアクティブ表示切り替え
+        // アクティブ表示の切り替え
         $('.tab-menu a').removeClass('active');
         $(this).addClass('active');
 
         if (windowWidth > 768) {
-            // PC：スムーススクロール
+            // 【PC】スムーススクロール
             var position = $target.offset().top - 10;
             $('html, body').stop().animate({ scrollTop: position }, 700);
         } else {
-            // --- スマホ：【最終解決】scrollIntoViewハック ---
+            // 【スマホ】タブメニューを最上部に固定して切り替える
+            
+            // セクションを切り替える
+            $('section.wrapper').hide().removeClass('active-section');
+            $target.show().addClass('active-section');
 
-            // 1. まずコンテンツを切り替える（非表示にしてから表示）
-            $('section.wrapper').removeClass('active-section');
-            $target.addClass('active-section');
+            // タブメニューをstickyで固定（CSSで設定済みなら削除可）
+            $('.tab-menu').css({
+                'position': 'sticky',
+                'top': '0px',
+                'z-index': '99'
+            });
 
-            // 2. ブラウザが勝手にスクロール位置をズラすのを待ってから（100ms）、
-            // 「メニューの場所を画面の一番上に持ってこい」と強制命令を出す
-            setTimeout(function () {
-                $menu[0].scrollIntoView({
-                    behavior: 'instant', // 瞬間移動
-                    block: 'start'       // 画面の「上」に合わせる
+            // 目的地をメインビジュアルの高さに設定
+            var mainVisualHeight = $('.mainvisual').outerHeight();
+            var destination = mainVisualHeight;
+
+            // 即座にジャンプ（setTimeout 0で実行順を保証）
+            setTimeout(function() {
+                window.scrollTo({
+                    top: destination,
+                    behavior: 'instant'
                 });
-            }, 100); // 0.1秒待つのがミソです
+            }, 0);
         }
+        
+        // 他のスクロールイベントが動かないようにイベントを停止させる（重要！）
+        return false;
     });
 });
 
-
+/* =========================
+    2. Intersection Observer (フェードイン演出)
+========================= */
 document.addEventListener('DOMContentLoaded', function () {
     const fadeItems = document.querySelectorAll('.fade');
     const revealItems = document.querySelectorAll('.js-reveal');
@@ -55,15 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!entry.isIntersecting) return;
 
             const target = entry.target;
-
             if (target.classList.contains('fade')) {
                 target.classList.add('show');
             }
-
             if (target.classList.contains('js-reveal')) {
                 target.classList.add('is-visible');
             }
-
             obs.unobserve(target);
         });
     }, {
@@ -74,10 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fadeItems.forEach((item) => observer.observe(item));
     revealItems.forEach((item) => observer.observe(item));
-})
+});
 
 /* =========================
-    schedule progress line
+    3. スケジュール進行線 (Progress Line)
 ========================= */
 const scheduleList = document.querySelector('.js-schedule-list');
 const scheduleProgress = document.querySelector('.js-schedule-progress');
@@ -88,15 +102,11 @@ if (scheduleList && scheduleProgress) {
     const updateScheduleProgress = () => {
         const rect = scheduleList.getBoundingClientRect();
         const viewportH = window.innerHeight;
-
         const start = viewportH * 0.88;
         const end = viewportH * 0.18;
         const total = rect.height + (start - end);
         const passed = start - rect.top;
-        let progress = passed / total;
-
-        if (progress < 0) progress = 0;
-        if (progress > 1) progress = 1;
+        let progress = Math.min(Math.max(passed / total, 0), 1);
 
         const lineTopOffset = 10;
         const lineBottomOffset = 10;
@@ -104,7 +114,6 @@ if (scheduleList && scheduleProgress) {
         const currentHeight = maxHeight * progress;
 
         scheduleProgress.style.height = currentHeight + 'px';
-
         ticking = false;
     };
 
@@ -115,18 +124,17 @@ if (scheduleList && scheduleProgress) {
         }
     };
 
-    updateScheduleProgress();
     window.addEventListener('scroll', onScrollOrResize, { passive: true });
     window.addEventListener('resize', onScrollOrResize);
     window.addEventListener('load', updateScheduleProgress);
 }
 
-
 /* =========================
-    スムーススクロール
+    4. 汎用スムーススクロール (タブメニュー除外設定)
 ========================= */
 $(function () {
-    $('a[href^="#"]').on('click', function (e) {
+    // 【最重要修正】 '.tab-menu a' は除外する
+    $('a[href^="#"]').not('.tab-menu a').on('click', function (e) {
         const targetId = $(this).attr('href');
         const $target = $(targetId);
 
@@ -134,21 +142,18 @@ $(function () {
 
         e.preventDefault();
 
-        const headerHeight = $('.header').outerHeight(); // ヘッダー固定対策
-
+        const headerHeight = $('.header').outerHeight() || 0;
         const position = $target.offset().top - headerHeight;
 
-        $('html, body').animate({
+        $('html, body').stop().animate({
             scrollTop: position
         }, 600);
     });
 });
 
-
 /* =========================
-    ハンバーガーメニュー
+    5. ハンバーガーメニュー
 ========================= */
-
 document.addEventListener('DOMContentLoaded', function () {
     const header = document.querySelector('.header');
     const toggle = document.querySelector('.header__toggle');
@@ -158,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggle.addEventListener('click', function () {
         header.classList.toggle('is-open');
-
         const isOpen = header.classList.contains('is-open');
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
