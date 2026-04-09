@@ -238,11 +238,36 @@ a {
 .fv__btn--line {
     background: #18c95d;
     color: #ffffff;
+    display: inline-block; /* 傾斜をかけるために必要 */
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    /* A. 最初から12度傾けておく */
+    transform: skewX(-12deg); 
 }
 
+/* 文字を真っ直ぐに戻す設定 */
+.fv__btn--line .btn-inner {
+    transform: skewX(12deg); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+/* ホバー時の設定 */
 .fv__btn--line:hover {
     background: #12a94c;
+    /*傾き(-12deg)を維持 */
     transform: skewX(-12deg);
+}
+
+/* ホバー中も文字の「垂直」をキープ */
+.fv__btn--line:hover .btn-inner {
+    transform: skewX(12deg);
 }
 
 .fv__btn--guide {
@@ -1399,7 +1424,7 @@ a {
 
 /*wrapper共通*/
 .wrapper {
-    max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
     padding: 80px;
     box-sizing: border-box;
@@ -1457,7 +1482,6 @@ a {
 .hero-content.wrapper {
     padding: 80px;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
     position: relative;
@@ -1581,13 +1605,13 @@ a {
     }
 
     .hero-content.wrapper {
-        padding: 30px;
+        padding: 38px;
 
     }
 
     .mainvisual {
         height: 100dvh;
-        min-height: 400px;
+        max-height: 400px;
         background-attachment: scroll;
         background-size: cover;
         background-position: center center;
@@ -1621,6 +1645,7 @@ a {
     section.wrapper {
         display: none;
         opacity: 0;
+        padding: 38px;
         /* 重要：中身が空でも画面半分くらいの高さは維持させる（位置飛び防止） */
         /* min-height: 100vh;  */
         /* overflow: hidden; */
@@ -1888,14 +1913,13 @@ a {
 
 /* --- 画像エリア（左側） --- */
 #kids-family .photo {
-    flex: 0 0 200px;
     /* 画像の横幅を200pxに固定 */
-    padding: 10px;
+    flex: 0 0 200px;
     background: none;
-    border: none !important;
-    /* ★枠線の重複を防止 */
+    border: none;
     overflow: hidden;
     /* 拡大アニメーションのマスク */
+    box-sizing: border-box;
 }
 
 #kids-family .photo img {
@@ -1905,20 +1929,19 @@ a {
     /* 枠に合わせてきれいに収める */
     display: block;
     transition: transform 0.5s ease;
-    /* ★滑らかな拡大を実現 */
-    border-radius: 2%;
+    
 }
 
 /* カードにホバーした時に画像を拡大 */
 #kids-family li:hover .photo img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 /* --- テキストエリア（右側） --- */
 #kids-family li .content {
     flex: 1;
     /* 残りの幅をすべて使用 */
-    padding: 30px 10px;
+    padding: 30px 20px;
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -1932,14 +1955,22 @@ a {
     font-weight: bold;
     margin-bottom: 15px;
     line-height: 1.4;
+    text-align: center;
     color: #1a1a1a;
 }
 
 #kids-family li .content .message {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 450;
     line-height: 1.7;
-    color: #666;
+    color: #302f2f;
     margin: 0;
+}
+
+#kids-family .text {
+    margin-top: 60px;
+    font-size: 1.2rem;
+
 }
 
 /*KIDS&FAMILY responsive*/
@@ -2016,7 +2047,7 @@ a {
 #food-marche .food-content {
     display: flex;
     gap: 30px;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 /* 左側：画像ギャラリー */
@@ -2030,30 +2061,36 @@ a {
     flex: 1;
     position: relative;
     list-style: none;
-
+    height: auto;
+    /*枠からはみ出した分を隠す*/
+    overflow: hidden;
 }
 
 #food-marche .food-content .food-item img {
     width: 100%;
-    height: 350px;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.5s;
 }
 
 .food-content .food-item:first-child img {
-    object-position: right;
+    object-position: center;
+}
+
+.food-content .food-item:nth-child(2) img {
+    object-position: 38% center;
 }
 
 
 .food-content .food-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 
 .food-content .item-info {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 30px 20px 20px;
+    padding: 20px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     width: 100%;
 }
@@ -2063,7 +2100,7 @@ a {
     flex: 1;
     background-color: rgba(0, 0, 0, 0.2);
     /* 背景を少し暗くして文字を読みやすく */
-    padding: 40px;
+    padding: 30px;
 }
 
 .panel-sub {
@@ -2091,6 +2128,10 @@ a {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.shop-list .txt {
+    width: 70%;
+}
+
 .shop-list .name {
     font-weight: bold;
     font-size: 1.3rem;
@@ -2098,7 +2139,7 @@ a {
 
 .shop-list .desc {
     font-size: 1rem;
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 .zone-tag {
@@ -2280,5 +2321,219 @@ a {
 
     #night-event .section-title {
         font-size: 2.5rem;
+    }
+}
+
+
+
+
+/* 「メインページへ戻る」ボタン(左側表示）、「top-page」ボタン（右側表示） */
+/* --- 固定ナビゲーション：ベース --- */
+.fixed-navigation {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 100%;
+
+    z-index: 9999;
+    pointer-events: none; /* 親要素はクリックを透過 */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- ボタン共通スタイル --- */
+.nav-btn {
+    pointer-events: auto; /* ボタン自体はクリック可能 */
+    width: 60px; /* 80pxの余白に収める */
+    min-height: 160px; /* 矢印と文字が被らないための最低限の高さ */
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #ebeaea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid #e60012;
+    text-align: center;
+    transition: all 0.3s ease;
+    writing-mode: vertical-rl; /* 縦書き */
+    position: relative;
+    
+    /* 文字を枠内の垂直中央に配置 */
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    padding: 8px;
+}
+
+/* --- 矢印の共通設定（疑似要素） --- */
+.nav-btn::before,
+.nav-btn::after {
+    content: "";
+    position: absolute;
+    writing-mode: horizontal-tb; /* 縦書きモードをリセットして向きを固定 */
+    transition: 0.3s;
+}
+
+/* 矢印の「先端（くの字）」 */
+.nav-btn::before {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #e60012;
+    border-left: 2px solid #e60012;
+}
+
+/* 矢印の「棒（ライン）」 */
+.nav-btn::after {
+    background-color: #e60012;
+    width: 2px;
+    height: 40px; /* 矢印の長さ */
+}
+
+/* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
+.btn-left {
+    margin-left: 10px;
+    align-items: center;
+}
+
+/* 先端（くの字） */
+.btn-left::before {
+    top: 7.1%; /* ボタンの上端からの位置 */
+    left: 15%;
+    /* 重要：一度回転をリセットし、そこから左を向かせる */
+    writing-mode: horizontal-tb;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #e60012;
+    border-left: 2px solid #e60012;
+    /* -45度回転させて左向きにする */
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+/* 棒（ライン） */
+.btn-left::after {
+    top: 10%; /* 先端の頂点と合わせる */
+    left: 47%;
+    writing-mode: horizontal-tb;
+    background-color: #e60012;
+    width: 50px;
+    height: 2px; /* お好みの長さに調整 */
+    transform: translateX(-50%);
+}
+
+/* --- 右側：TOP PAGE 個別設定（文字の左に上矢印） --- */
+/* 右側のTOP PAGEボタンを初期状態で隠す */
+.btn-right {
+    margin-right: 10px;
+    opacity: 0;           /* 透明にする */
+    visibility: hidden;  /* クリックも無効化 */
+    transform: translateX(20px); /* 少し右にずらしておく */
+    transition: all 0.5s ease;   /* ふわっと出すためのアニメーション */
+}
+
+/* JSでこのクラスがついたら表示する */
+.btn-right.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* 定位置に戻る */
+}
+
+.btn-right::before {
+    top: 30px; /* 文字の左上付近に配置 */
+    left: 15px; /* 文字の左側（隙間） */
+    transform: rotate(45deg); /* 上向き */
+}
+
+.btn-right::after {
+    top: 31px;
+    left: 18px; /* 先端の頂点と合わせる */
+    height: 90px;
+}
+
+/* --- ホバーアクション --- */
+.nav-btn:hover {
+    background-color: #e60012;
+    color: #fff;
+}
+
+.nav-btn:hover::before {
+     border-color: #fff;
+    }
+
+.nav-btn:hover::after {
+    background-color: #fff;
+}
+
+.btn-left:hover {
+    transform: translateX(5px);
+}
+
+.btn-right:hover {
+    transform: translateX(-5px);
+}
+
+@media screen and (max-width: 768px) {
+    .fixed-navigation {
+        top: 50px;
+    }
+
+    .nav-btn {
+        top: 10px;
+        width: 32px; /* 少しだけ余裕を持たせる */
+        min-height: 120px;
+        font-size: 0.7rem;
+        padding-top: 45px; /* 文字を下げて、上に矢印スペースを確保 */
+        align-items: flex-start; /* 文字の開始位置を上に揃える */
+    }
+
+    /* 矢印の共通リセット：中央配置を徹底 */
+    .nav-btn::before, .nav-btn::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .btn-left {
+        margin-left: 2px;
+    }
+
+    /* --- 左側：MAIN PAGE (左向き矢印) --- */
+    .btn-left::before {
+        top: 10.5px;
+        width: 7px;
+        height: 7px;
+        left: 9px;
+        /* 中央から左に回転 */
+        transform: translateX(-50%) rotate(-45deg); 
+    }
+
+    .btn-left::after {
+        top: 13px;
+        width: 20px; /* 棒を短く */
+        height: 2px;
+        transform: translateX(-50%);
+    }
+
+    .btn-right {
+        margin-right: 2px;
+    }
+
+    /* --- 右側：TOP PAGE (上向き矢印) --- */
+    .btn-right::before {
+        top: 10px;
+        width: 7px;
+        height: 7px;
+        /* 中央で上向きに回転 */
+        transform: translateX(-50%) rotate(45deg);
+    }
+    .btn-right::after {
+        top: 11px;
+        width: 2px;
+        height: 25px; /* 縦の棒 */
+        transform: translateX(-50%);
+    }
+
+    /* コンテンツ被り防止：これがないと画像の上にボタンが乗ります */
+    .wrapper {
+        padding-left: 32px;
+        padding-right: 32px;
     }
 }

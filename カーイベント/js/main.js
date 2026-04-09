@@ -174,3 +174,56 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+/* =========================
+    6. TOP PAGE ボタンの表示制御（ページ汎用版）
+========================= */
+$(window).on('scroll load', function () {
+    const $btn = $('.btn-right');
+    if ($btn.length === 0) return;
+
+    // 現在のスクロール量を取得
+    const scrollTop = $(window).scrollTop();
+
+    // 【判定】
+    // ページを500px以上スクロールした、
+    // もしくは、もしタブが存在するならその位置まで来たら表示
+    const $tabMenu = $('.tab-menu, .tabs-container').first();
+    let threshold = 500; // デフォルトは500px
+
+    if ($tabMenu.length > 0) {
+        threshold = $tabMenu.offset().top - 100;
+    }
+
+    if (scrollTop > threshold) {
+        $btn.addClass('is-visible');
+    } else {
+        $btn.removeClass('is-visible');
+    }
+});
+
+/* =========================
+    7. TOP PAGE ボタンのスムーススクロール（ネイティブ最強版）
+========================= */
+// jQueryを使わず、純粋なJSとして定義することで競合を避けます
+document.addEventListener('click', function(e) {
+    // クリックされた要素が .btn-right もしくはその子要素(矢印など)か判定
+    const btn = e.target.closest('.btn-right');
+    if (!btn) return;
+
+    // 1. 挙動を完全に独占する
+    e.preventDefault();
+    e.stopPropagation();
+
+    // 2. 目的地（.mainvisual）を取得
+    const target = document.querySelector('.mainvisual');
+    const targetPos = target ? target.getBoundingClientRect().top + window.pageYOffset : 0;
+
+    // 3. ブラウザ標準のスムーススクロールを実行
+    // behavior: 'smooth' は jQueryのanimateとは別ルートで動くため、.stop()の影響を受けません
+    window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth'
+    });
+}, true); // 第3引数を true にして、イベントのキャプチャ段階で捕まえるのがコツ
