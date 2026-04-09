@@ -269,7 +269,7 @@ a {
     text-align: center;
 }
 
-.section-title {
+.concept .section-title {
     color: #333333;
     font-size: 52px;
     font-weight: 900;
@@ -763,7 +763,8 @@ a {
 .footer {
     background: #000000;
     border-top: 4px solid #ff0000;
-    padding: 60px 0 30px; /* 少し余裕を持たせる */
+    padding: 60px 0 30px;
+    /* 少し余裕を持たせる */
     color: #ffffff;
 }
 
@@ -776,7 +777,7 @@ a {
 .footer__top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; 
+    align-items: flex-start;
     gap: 60px;
 }
 
@@ -786,7 +787,8 @@ a {
 }
 
 .footer__logo-img {
-    height: 40px; /* ロゴのサイズ調整 */
+    height: 40px;
+    /* ロゴのサイズ調整 */
     width: auto;
 }
 
@@ -800,15 +802,19 @@ a {
 /* SNS共通設定 */
 .footer__sns {
     display: flex;
-    gap: 30px; /* アイコン同士の間隔 */
+    gap: 30px;
+    /* アイコン同士の間隔 */
     margin-top: 32px;
 }
 
 .sns-link {
     display: flex;
-    flex-direction: column; /* 縦並びにする */
-    align-items: center;    /* 中央寄せ */
-    gap: 10px;              /* アイコンと文字の間隔 */
+    flex-direction: column;
+    /* 縦並びにする */
+    align-items: center;
+    /* 中央寄せ */
+    gap: 10px;
+    /* アイコンと文字の間隔 */
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -824,10 +830,14 @@ a {
 .sns-label {
     color: #ffffff;
     font-size: 0.7rem;
-    font-weight: bold;           /* 極太にして力強さを出す */
-    letter-spacing: 0.1em;      /* 文字間隔を広げて高級感を出す */
-    font-family: 'Arial Black', 'sans-serif'; /* 角張った太いフォント */
-    font-style: italic;         /* 斜体にしてスピード感を出す */
+    font-weight: bold;
+    /* 極太にして力強さを出す */
+    letter-spacing: 0.1em;
+    /* 文字間隔を広げて高級感を出す */
+    font-family: 'Arial Black', 'sans-serif';
+    /* 角張った太いフォント */
+    font-style: italic;
+    /* 斜体にしてスピード感を出す */
     transition: color 0.3s ease;
 }
 
@@ -837,10 +847,25 @@ a {
 }
 
 /* YouTubeなら赤、LINEなら緑のように個別に光らせる */
-.sns-link.--x:hover i, .sns-link.--x:hover .sns-label { color: #888888; }
-.sns-link.--instagram:hover i, .sns-link.--instagram:hover .sns-label { color: #e4405f; }
-.sns-link.--youtube:hover i, .sns-link.--youtube:hover .sns-label { color: #ff0000; }
-.sns-link.--line:hover i, .sns-link.--line:hover .sns-label { color: #06c755; }
+.sns-link.--x:hover i,
+.sns-link.--x:hover .sns-label {
+    color: #888888;
+}
+
+.sns-link.--instagram:hover i,
+.sns-link.--instagram:hover .sns-label {
+    color: #e4405f;
+}
+
+.sns-link.--youtube:hover i,
+.sns-link.--youtube:hover .sns-label {
+    color: #ff0000;
+}
+
+.sns-link.--line:hover i,
+.sns-link.--line:hover .sns-label {
+    color: #06c755;
+}
 
 /* 光の輪（グロー効果） */
 .sns-link:hover i {
@@ -863,7 +888,8 @@ a {
 .footer__col-title {
     font-size: 0.9rem;
     font-weight: 800;
-    color: #888888; /* 見出しは少し暗くしてメリハリを出す */
+    color: #888888;
+    /* 見出しは少し暗くしてメリハリを出す */
     letter-spacing: 0.1em;
     margin-bottom: 8px;
 }
@@ -878,7 +904,8 @@ a {
 }
 
 .footer__col a:hover {
-    color: #f36969; /* ホバーで赤く光る */
+    color: #f36969;
+    /* ホバーで赤く光る */
 }
 
 /* --- Bottom --- */
@@ -1121,12 +1148,15 @@ a {
         white-space: nowrap;
     }
 
-    .section-title {
-        font-size: 34px;
-    }
 
     .contents {
         padding: 72px 0;
+    }
+
+    .contents .section-title {
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
     }
 
     .contents__inner {
@@ -1147,7 +1177,6 @@ a {
 
     .contents__item {
         height: 200px;
-        /* ←ここ重要（今より低くする） */
         border-radius: 6px;
     }
 
@@ -1166,7 +1195,29 @@ a {
     }
 
     .contents__overlay {
-        display: none;
+        position: absolute;
+        inset: 0;
+        display: block;
+        opacity: 1;
+        background: none;
+        z-index: 3;
+    }
+
+    .contents__btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 7px 10px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        background: rgba(0, 0, 0, 0.58);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 4px;
+        text-shadow: none;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .contents__item:hover {
@@ -1178,16 +1229,26 @@ a {
     }
 
     .contents__item:hover .contents__overlay {
-        opacity: 0;
+        opacity: 1;
     }
 
     .contents__item:hover .contents__btn {
-        opacity: 0;
-        transform: translateY(10px);
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .access {
         padding: 60px 0;
+    }
+
+    .section-label {
+        font-size: 12px;
+        letter-spacing: 0.15em;
+    }
+
+    .access .section-title {
+        font-size: 24px;
+        font-weight: 700;
     }
 
     .access__map {
@@ -1211,6 +1272,11 @@ a {
 
     .schedule {
         padding: 60px 0;
+    }
+
+    .schedule .section-title {
+        font-size: 24px;
+        font-weight: 700;
     }
 
     .schedule__inner {
@@ -1278,7 +1344,7 @@ a {
         line-height: 1.7;
     }
 
-    .sponsor{
+    .sponsor {
         padding: 40px 0 60px;
     }
 
@@ -1311,16 +1377,17 @@ a {
 
     .footer__top {
         flex-direction: column;
-        align-items: flex-start; /* スマホでは左寄せに戻す */
+        align-items: flex-start;
+        /* スマホでは左寄せに戻す */
         gap: 50px;
     }
-    
+
     .footer__links {
         gap: 40px;
         flex-wrap: wrap;
         margin-top: 10px;
     }
-    
+
     .footer__col {
         min-width: 140px;
     }
@@ -1730,6 +1797,7 @@ a {
 
 /*GR AREA  responsive*/
 @media (max-width: 768px) {
+
     /*wrapper共通*/
     .wrapper {
         padding: 40px 20px;
