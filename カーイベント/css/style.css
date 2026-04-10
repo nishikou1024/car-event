@@ -886,7 +886,8 @@ a {
 /* X (Twitter): グレー/ライトブルー */
 .sns-link.--x:hover i,
 .sns-link.--x:hover .sns-label {
-    color: #888888; /* もしくは X公式の黒/白に合わせて #fff */
+    color: #888888;
+    /* もしくは X公式の黒/白に合わせて #fff */
 }
 
 /* Instagram: グラデーションに近いピンク/赤 */
@@ -903,7 +904,8 @@ a {
 
 /* 規約リンク */
 .footer__nav {
-    margin-top: 30px; /* SNSのタイトル行と合わせる微調整 */
+    margin-top: 30px;
+    /* SNSのタイトル行と合わせる微調整 */
 }
 
 .footer__nav-title {
@@ -945,16 +947,17 @@ a {
     .footer__inner {
         padding: 40px;
     }
+
     .footer__main {
         flex-direction: column;
         gap: 60px;
     }
-    
+
     .footer__right {
         flex-direction: column;
         gap: 40px;
     }
-    
+
     .footer__nav {
         margin-top: 0;
     }
@@ -1386,7 +1389,7 @@ a {
         padding: 40px 0 60px;
     }
 
-    .sponsor .section-title{
+    .sponsor .section-title {
         font-size: 24px;
         font-weight: 700;
     }
@@ -2497,23 +2500,21 @@ body.is-foodmap-open .btn-right {
 /* --- 固定ナビゲーション：ベース --- */
 .fixed-navigation {
     position: fixed;
-    top: 19%; /* メインビジュアル付近で邪魔にならない高さ */
+    top: 19%;
+    /* メインビジュアル付近で邪魔にならない高さ */
     left: 0;
     width: 100%;
     z-index: 9999;
-<<<<<<< HEAD
     pointer-events: none;
-    /* 親要素はクリックを透過 */
-=======
-    pointer-events: none; /* 親はクリックをスルー */
->>>>>>> main
+    /* 親はクリックをスルー */
     display: flex;
     justify-content: space-between;
 
     /* --- 初期状態：隠しておく --- */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px); /* 上からふわっと降りてくる演出 */
+    transform: translateY(-20px);
+    /* 上からふわっと降りてくる演出 */
     transition: all 0.5s ease;
 }
 
@@ -2526,18 +2527,16 @@ body.is-foodmap-open .btn-right {
 
 /* --- ボタン共通スタイル --- */
 .nav-btn {
-<<<<<<< HEAD
     pointer-events: auto;
     /* ボタン自体はクリック可能 */
     width: 60px;
     /* 80pxの余白に収める */
     min-height: 160px;
     /* 矢印と文字が被らないための最低限の高さ */
-=======
-    pointer-events: auto; /* ボタンはクリック可能にする */
+    pointer-events: auto;
+    /* ボタンはクリック可能にする */
     width: 60px;
     min-height: 160px;
->>>>>>> main
     background-color: rgba(26, 26, 26, 0.9);
     border: 1px solid #e60012;
     color: #ebeaea;
@@ -2549,13 +2548,11 @@ body.is-foodmap-open .btn-right {
     writing-mode: vertical-rl;
     /* 縦書き */
     position: relative;
-<<<<<<< HEAD
 
     /* 文字を枠内の垂直中央に配置 */
-=======
->>>>>>> main
     display: flex;
-    align-items: center; /* 垂直中央 */
+    align-items: center;
+    /* 垂直中央 */
     justify-content: center;
     letter-spacing: 0.1em;
     padding: 8px;
@@ -2567,7 +2564,6 @@ body.is-foodmap-open .btn-right {
     content: "";
     position: absolute;
     writing-mode: horizontal-tb;
-<<<<<<< HEAD
     /* 縦書きモードをリセットして向きを固定 */
     transition: 0.3s;
 }
@@ -2588,27 +2584,18 @@ body.is-foodmap-open .btn-right {
     /* 矢印の長さ */
 }
 
-=======
-    transition: 0.3s;
-}
 
->>>>>>> main
 /* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
 
 .btn-left {
-
     margin-left: 10px;
-
     align-items: center;
-
 }
 
 
 
 .btn-left span {
-
     transform: rotate(180deg);
-
 }
 
 
@@ -2616,27 +2603,17 @@ body.is-foodmap-open .btn-right {
 /* 先端（くの字） */
 
 .btn-left::before {
-<<<<<<< HEAD
     top: 7.1%;
     /* ボタンの上端からの位置 */
     left: 15%;
-=======
-
-    top: 7.1%; /* ボタンの上端からの位置 */
-
+    top: 7.1%;
+    /* ボタンの上端からの位置 */
     left: 28%;
-
->>>>>>> main
     /* 重要：一度回転をリセットし、そこから左を向かせる */
-
     writing-mode: horizontal-tb;
-
     width: 10px;
-
     height: 10px;
-
     border-top: 2px solid #e60012;
-
     border-left: 2px solid #e60012;
 
     /* -45度回転させて左向きにする */
@@ -2645,38 +2622,24 @@ body.is-foodmap-open .btn-right {
 
 }
 
-
-
 /* 棒（ライン） */
 
 .btn-left::after {
-<<<<<<< HEAD
     top: 10%;
     /* 先端の頂点と合わせる */
     left: 47%;
-=======
-
-    top: 10%; /* 先端の頂点と合わせる */
-
+    top: 10%;
+    /* 先端の頂点と合わせる */
     left: 50%;
-
->>>>>>> main
     writing-mode: horizontal-tb;
-
     background-color: #e60012;
-<<<<<<< HEAD
     width: 50px;
     height: 2px;
     /* お好みの長さに調整 */
-=======
-
     width: 36px;
-
-    height: 2px; /* お好みの長さに調整 */
-
->>>>>>> main
+    height: 2px;
+    /* お好みの長さに調整 */
     transform: translateX(-50%);
-
 }
 
 
@@ -2687,7 +2650,6 @@ body.is-foodmap-open .btn-right {
 
 .btn-right {
     margin-right: 10px;
-<<<<<<< HEAD
     opacity: 0;
     /* 透明にする */
     visibility: hidden;
@@ -2704,52 +2666,51 @@ body.is-foodmap-open .btn-right {
     visibility: visible;
     transform: translateX(0);
     /* 定位置に戻る */
-=======
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
-    transition: all 0.3s ease; 
->>>>>>> main
+    transition: all 0.3s ease;
 }
 
 /* 矢印（先端） */
 .btn-right::before {
-<<<<<<< HEAD
     top: 30px;
     /* 文字の左上付近に配置 */
     left: 15px;
     /* 文字の左側（隙間） */
     transform: rotate(45deg);
     /* 上向き */
-=======
-    content: ""; /* 念のため再定義 */
+    content: "";
+    /* 念のため再定義 */
     position: absolute;
     top: 30px;
     left: 15px;
-    width: 8px;   /* サイズが消えている場合は追加 */
-    height: 8px;  /* サイズが消えている場合は追加 */
+    width: 8px;
+    /* サイズが消えている場合は追加 */
+    height: 8px;
+    /* サイズが消えている場合は追加 */
     border-top: 2px solid #e60012;
     border-left: 2px solid #e60012;
-    transform: rotate(45deg); /* 上向き */
-    opacity: 1;   /* 確実に表示 */
+    transform: rotate(45deg);
+    /* 上向き */
+    opacity: 1;
+    /* 確実に表示 */
     visibility: visible;
->>>>>>> main
 }
 
 /* 矢印（ライン） */
 .btn-right::after {
-    content: ""; /* 念のため再定義 */
+    content: "";
+    /* 念のため再定義 */
     position: absolute;
     top: 31px;
     left: 18px;
-<<<<<<< HEAD
     /* 先端の頂点と合わせる */
-=======
     width: 2px;
->>>>>>> main
     height: 90px;
     background-color: #e60012;
-    opacity: 1;   /* 確実に表示 */
+    opacity: 1;
+    /* 確実に表示 */
     visibility: visible;
 }
 
@@ -2782,14 +2743,12 @@ body.is-foodmap-open .btn-right {
     }
 
     .nav-btn {
-<<<<<<< HEAD
         top: 10px;
         width: 32px;
         /* 少しだけ余裕を持たせる */
-=======
         top: 500px;
-        width: 32px; /* 少しだけ余裕を持たせる */
->>>>>>> main
+        width: 32px;
+        /* 少しだけ余裕を持たせる */
         min-height: 120px;
         font-size: 0.7rem;
         padding-top: 45px;

@@ -198,7 +198,6 @@ $(window).on('scroll load', function () {
     } else {
         $fixedNav.removeClass('is-visible');
     }
-<<<<<<< HEAD
 });
 
 /* =========================
@@ -257,6 +256,4 @@ if (openFoodMapBtn && foodMapModal && closeFoodMapOverlay && closeFoodMapBtn) {
         }
     });
 }
-=======
-});
->>>>>>> main
+
