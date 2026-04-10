@@ -940,6 +940,10 @@ a {
 
 /* スマホ対応（レスポンシブ） */
 @media (max-width: 768px) {
+
+    .footer__inner {
+        padding: 40px;
+    }
     .footer__main {
         flex-direction: column;
         gap: 60px;
@@ -2333,21 +2337,33 @@ a {
 /* --- 固定ナビゲーション：ベース --- */
 .fixed-navigation {
     position: fixed;
-    top: 19%;
+    top: 19%; /* メインビジュアル付近で邪魔にならない高さ */
     left: 0;
     width: 100%;
-
     z-index: 9999;
-    pointer-events: none; /* 親要素はクリックを透過 */
+    pointer-events: none; /* 親はクリックをスルー */
     display: flex;
     justify-content: space-between;
+
+    /* --- 初期状態：隠しておく --- */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px); /* 上からふわっと降りてくる演出 */
+    transition: all 0.5s ease;
+}
+
+/* --- JSでこのクラスがついたら左右セットで表示 --- */
+.fixed-navigation.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* --- ボタン共通スタイル --- */
 .nav-btn {
-    pointer-events: auto; /* ボタン自体はクリック可能 */
-    width: 60px; /* 80pxの余白に収める */
-    min-height: 160px; /* 矢印と文字が被らないための最低限の高さ */
+    pointer-events: auto; /* ボタンはクリック可能にする */
+    width: 60px;
+    min-height: 160px;
     background-color: rgba(26, 26, 26, 0.9);
     border: 1px solid #e60012;
     color: #ebeaea;
@@ -2358,101 +2374,130 @@ a {
     transition: all 0.3s ease;
     writing-mode: vertical-rl; /* 縦書き */
     position: relative;
-    
-    /* 文字を枠内の垂直中央に配置 */
     display: flex;
-    align-items: top;
+    align-items: center; /* 垂直中央 */
     justify-content: center;
     letter-spacing: 0.1em;
     padding: 8px;
 }
 
-/* --- 矢印の共通設定（疑似要素） --- */
+/* --- 矢印共通設定 --- */
 .nav-btn::before,
 .nav-btn::after {
     content: "";
     position: absolute;
-    writing-mode: horizontal-tb; /* 縦書きモードをリセットして向きを固定 */
+    writing-mode: horizontal-tb;
     transition: 0.3s;
 }
 
-/* 矢印の「先端（くの字）」 */
-.nav-btn::before {
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid #e60012;
-    border-left: 2px solid #e60012;
-}
-
-/* 矢印の「棒（ライン）」 */
-.nav-btn::after {
-    background-color: #e60012;
-    width: 2px;
-    height: 40px; /* 矢印の長さ */
-}
-
 /* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
+
 .btn-left {
+
     margin-left: 10px;
+
     align-items: center;
+
 }
+
+
 
 .btn-left span {
+
     transform: rotate(180deg);
+
 }
+
+
 
 /* 先端（くの字） */
+
 .btn-left::before {
+
     top: 7.1%; /* ボタンの上端からの位置 */
+
     left: 28%;
+
     /* 重要：一度回転をリセットし、そこから左を向かせる */
+
     writing-mode: horizontal-tb;
+
     width: 10px;
+
     height: 10px;
+
     border-top: 2px solid #e60012;
+
     border-left: 2px solid #e60012;
+
     /* -45度回転させて左向きにする */
+
     transform: translateX(-50%) rotate(-45deg);
+
 }
+
+
 
 /* 棒（ライン） */
+
 .btn-left::after {
+
     top: 10%; /* 先端の頂点と合わせる */
+
     left: 50%;
+
     writing-mode: horizontal-tb;
+
     background-color: #e60012;
+
     width: 36px;
+
     height: 2px; /* お好みの長さに調整 */
+
     transform: translateX(-50%);
+
 }
+
+
 
 /* --- 右側：TOP PAGE 個別設定（文字の左に上矢印） --- */
+
 /* 右側のTOP PAGEボタンを初期状態で隠す */
+
 .btn-right {
     margin-right: 10px;
-    opacity: 0;           /* 透明にする */
-    visibility: hidden;  /* クリックも無効化 */
-    transform: translateX(20px); /* 少し右にずらしておく */
-    transition: all 0.5s ease;   /* ふわっと出すためのアニメーション */
-}
-
-/* JSでこのクラスがついたら表示する */
-.btn-right.is-visible {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0); /* 定位置に戻る */
+    transform: translateX(0);
+    transition: all 0.3s ease; 
 }
 
+/* 矢印（先端） */
 .btn-right::before {
-    top: 30px; /* 文字の左上付近に配置 */
-    left: 15px; /* 文字の左側（隙間） */
+    content: ""; /* 念のため再定義 */
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    width: 8px;   /* サイズが消えている場合は追加 */
+    height: 8px;  /* サイズが消えている場合は追加 */
+    border-top: 2px solid #e60012;
+    border-left: 2px solid #e60012;
     transform: rotate(45deg); /* 上向き */
+    opacity: 1;   /* 確実に表示 */
+    visibility: visible;
 }
 
+/* 矢印（ライン） */
 .btn-right::after {
+    content: ""; /* 念のため再定義 */
+    position: absolute;
     top: 31px;
-    left: 18px; /* 先端の頂点と合わせる */
+    left: 18px;
+    width: 2px;
     height: 90px;
+    background-color: #e60012;
+    opacity: 1;   /* 確実に表示 */
+    visibility: visible;
 }
 
 /* --- ホバーアクション --- */
@@ -2484,7 +2529,7 @@ a {
     }
 
     .nav-btn {
-        top: 10px;
+        top: 500px;
         width: 32px; /* 少しだけ余裕を持たせる */
         min-height: 120px;
         font-size: 0.7rem;
