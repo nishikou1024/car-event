@@ -177,30 +177,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /* =========================
-    6. TOP PAGE ボタンの表示制御（ページ汎用版）
+    6. 固定ナビ（MAIN/TOPボタン）の表示制御
 ========================= */
 $(window).on('scroll load', function () {
-    const $btn = $('.btn-right');
-    if ($btn.length === 0) return;
+    // ボタンの親要素を取得
+    const $fixedNav = $('.fixed-navigation');
+    if ($fixedNav.length === 0) return;
 
-    // 現在のスクロール量を取得
     const scrollTop = $(window).scrollTop();
-
-    // 【判定】
-    // ページを500px以上スクロールした、
-    // もしくは、もしタブが存在するならその位置まで来たら表示
     const $tabMenu = $('.tab-menu, .tabs-container').first();
-    let threshold = 500; // デフォルトは500px
+    let threshold = 500;
 
     if ($tabMenu.length > 0) {
         threshold = $tabMenu.offset().top - 100;
     }
 
+    // 両方のボタンが入った親要素に対してクラスを付け外しする
     if (scrollTop > threshold) {
-        $btn.addClass('is-visible');
+        $fixedNav.addClass('is-visible');
     } else {
-        $btn.removeClass('is-visible');
+        $fixedNav.removeClass('is-visible');
     }
+<<<<<<< HEAD
 });
 
 /* =========================
@@ -259,3 +257,6 @@ if (openFoodMapBtn && foodMapModal && closeFoodMapOverlay && closeFoodMapBtn) {
         }
     });
 }
+=======
+});
+>>>>>>> main
