@@ -194,38 +194,60 @@
                     </li>
                 </ul>
 
-                <div class="food-info-panel">
-                    <div class="panel-header">
-                        <p class="panel-sub">LOCAL_SHIPPING</p>
-                        <h4 class="panel-main">KITCHEN CARS</h4>
+                <div class="food-marche__right">
+                    <p class="food-marche__sub">LOCAL SHIPPING</p>
+                    <h3 class="food-marche__title">FOOD AREA</h3>
+
+                    <div class="food-card-list">
+                        <div class="food-card">
+                            <p class="food-card__label food-card__label--a">Aエリア</p>
+                            <h4 class="food-card__title">フードエリア</h4>
+                            <p class="food-card__text">
+                                ピザ・バーガー・タコスなど多彩なキッチンカーが集結
+                            </p>
+                        </div>
+
+                        <div class="food-card">
+                            <p class="food-card__label food-card__label--b">Bエリア</p>
+                            <h4 class="food-card__title">GR物販エリア</h4>
+                            <p class="food-card__text">
+                                GRグッズ・アパレル・アクセサリーなど限定アイテムを販売
+                            </p>
+                        </div>
+
+                        <div class="food-card">
+                            <p class="food-card__label food-card__label--c">Cエリア</p>
+                            <h4 class="food-card__title">マルシェエリア</h4>
+                            <p class="food-card__text">
+                                地元グルメや五平餅などが楽しめるローカルフードゾーン
+                            </p>
+                        </div>
                     </div>
-                    <ul class="shop-list">
-                        <li>
-                            <div class="txt">
-                                <p class="name">Neo Pizza Express</p>
-                                <p class="desc">地元野菜使用の本格石窯で焼くナポリピッツァ</p>
-                            </div>
-                            <span class="zone-tag">ZONE A</span>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="name">Burger Overdrive</p>
-                                <p class="desc">飛騨牛100%のグルメバーガー</p>
-                            </div>
-                            <span class="zone-tag">ZONE B</span>
-                        </li>
-                        <li>
-                            <div class="txt">
-                                <p class="name">Taco Drift</p>
-                                <p class="desc">地元食材使用の本場メキシカンスタイルのタコス</p>
-                            </div>
-                            <span class="zone-tag">ZONE C</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="map-button">GO TO FOOD MAP</a>
+
+                    <div class="foodmap-btn-wrap">
+                        <button class="foodmap-btn" id="openFoodMap" type="button">
+                            <span>FOOD MAP</span>を見る
+                        </button>
+                    </div>
                 </div>
-            </div>
         </section>
+
+        <div id="foodMapModal" class="foodmap-modal">
+            <div class="foodmap-modal__overlay" id="closeFoodMap"></div>
+
+            <div class="foodmap-modal__content">
+                <button class="foodmap-modal__close" id="closeFoodMapBtn" type="button" aria-label="閉じる">
+                    ×
+                </button>
+
+                <div class="foodmap-modal__header">
+                    <h2 class="foodmap-modal__title">FOOD MAP</h2>
+                    <p class="foodmap-modal__desc">各エリアの配置をご確認ください</p>
+                </div>
+
+                <img src="img/food-map.jpg" alt="FOOD MAP" class="foodmap-modal__img">
+            </div>
+        </div>
 
         <section id="night-event" class="wrapper">
             <div class="section-header">

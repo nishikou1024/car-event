@@ -199,3 +199,61 @@ $(window).on('scroll load', function () {
         $fixedNav.removeClass('is-visible');
     }
 });
+
+/* =========================
+    7. TOP PAGE ボタンのスムーススクロール（ネイティブ最強版）
+========================= */
+// jQueryを使わず、純粋なJSとして定義することで競合を避けます
+document.addEventListener('click', function(e) {
+    // クリックされた要素が .btn-right もしくはその子要素(矢印など)か判定
+    const btn = e.target.closest('.btn-right');
+    if (!btn) return;
+
+    // 1. 挙動を完全に独占する
+    e.preventDefault();
+    e.stopPropagation();
+
+    // 2. 目的地（.mainvisual）を取得
+    const target = document.querySelector('.mainvisual');
+    const targetPos = target ? target.getBoundingClientRect().top + window.pageYOffset : 0;
+
+    // 3. ブラウザ標準のスムーススクロールを実行
+    // behavior: 'smooth' は jQueryのanimateとは別ルートで動くため、.stop()の影響を受けません
+    window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth'
+    });
+}, true); // 第3引数を true にして、イベントのキャプチャ段階で捕まえるのがコツ
+
+/* =========================
+    8. フードマップモーダルの開閉
+========================= */
+
+const openFoodMapBtn = document.getElementById('openFoodMap');
+const foodMapModal = document.getElementById('foodMapModal');
+const closeFoodMapOverlay = document.getElementById('closeFoodMap');
+const closeFoodMapBtn = document.getElementById('closeFoodMapBtn');
+
+if (openFoodMapBtn && foodMapModal && closeFoodMapOverlay && closeFoodMapBtn) {
+    openFoodMapBtn.addEventListener('click', function () {
+        foodMapModal.classList.add('is-active');
+        document.body.classList.add('is-foodmap-open');
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeFoodMap() {
+        foodMapModal.classList.remove('is-active');
+        document.body.classList.remove('is-foodmap-open');
+        document.body.style.overflow = '';
+    }
+
+    closeFoodMapOverlay.addEventListener('click', closeFoodMap);
+    closeFoodMapBtn.addEventListener('click', closeFoodMap);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeFoodMap();
+        }
+    });
+}
+

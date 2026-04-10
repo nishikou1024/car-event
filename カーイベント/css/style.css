@@ -238,19 +238,20 @@ a {
 .fv__btn--line {
     background: #18c95d;
     color: #ffffff;
-    display: inline-block; /* 傾斜をかけるために必要 */
+    display: inline-block;
+    /* 傾斜をかけるために必要 */
     padding: 15px 40px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
 
     /* A. 最初から12度傾けておく */
-    transform: skewX(-12deg); 
+    transform: skewX(-12deg);
 }
 
 /* 文字を真っ直ぐに戻す設定 */
 .fv__btn--line .btn-inner {
-    transform: skewX(12deg); 
+    transform: skewX(12deg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -885,7 +886,8 @@ a {
 /* X (Twitter): グレー/ライトブルー */
 .sns-link.--x:hover i,
 .sns-link.--x:hover .sns-label {
-    color: #888888; /* もしくは X公式の黒/白に合わせて #fff */
+    color: #888888;
+    /* もしくは X公式の黒/白に合わせて #fff */
 }
 
 /* Instagram: グラデーションに近いピンク/赤 */
@@ -902,7 +904,8 @@ a {
 
 /* 規約リンク */
 .footer__nav {
-    margin-top: 30px; /* SNSのタイトル行と合わせる微調整 */
+    margin-top: 30px;
+    /* SNSのタイトル行と合わせる微調整 */
 }
 
 .footer__nav-title {
@@ -944,16 +947,17 @@ a {
     .footer__inner {
         padding: 40px;
     }
+
     .footer__main {
         flex-direction: column;
         gap: 60px;
     }
-    
+
     .footer__right {
         flex-direction: column;
         gap: 40px;
     }
-    
+
     .footer__nav {
         margin-top: 0;
     }
@@ -1297,7 +1301,6 @@ a {
         text-align: center;
     }
 
-
     .access__info {
         grid-template-columns: 1fr;
     }
@@ -1326,7 +1329,7 @@ a {
     }
 
     .schedule__title {
-        font-size: 34px;
+        font-size: 24px;
         margin-bottom: 40px;
     }
 
@@ -1385,6 +1388,11 @@ a {
         padding: 40px 0 60px;
     }
 
+    .sponsor .section-title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
     .sponsor__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -1394,10 +1402,8 @@ a {
         display: flex;
         justify-content: center;
         align-items: center;
-
         padding: 16px;
         border-radius: 8px;
-
         background: rgba(255, 255, 255, 0.03);
         transition: 0.3s;
     }
@@ -1432,8 +1438,6 @@ a {
 
 
 /*----↓↓Takahiroが入力したcss(イベントページ)-----*/
-
-
 /*wrapper共通*/
 .wrapper {
     width: 100%;
@@ -1441,7 +1445,6 @@ a {
     padding: 80px;
     box-sizing: border-box;
 }
-
 
 .section-header {
     margin-bottom: 40px;
@@ -1469,7 +1472,6 @@ a {
     background-color: #e60012;
     /* 基本は赤い線 */
 }
-
 
 /* --- メインビジュアル --- */
 .mainvisual {
@@ -1527,8 +1529,6 @@ a {
     z-index: -1;
 
 }
-
-
 
 .top-title {
     font-family: 'Oswald', sans-serif;
@@ -1680,7 +1680,6 @@ a {
     }
 }
 
-
 /* --- タブ共通：アクティブスタイル --- */
 .tab-menu a.active {
     border-bottom: 2px solid #000;
@@ -1712,8 +1711,6 @@ a {
     /* セクション自体のpaddingはwrapperで行うため0に */
     font-family: "Noto Sans JP", sans-serif;
 }
-
-
 
 #gr-area .label-line {
     background: none;
@@ -1851,14 +1848,7 @@ a {
         display: flex;
         flex-direction: column;
     }
-
-
 }
-
-
-
-
-
 
 /*KIDS&FAMILY*/
 /* --- KIDS & FAMILY（白背景）の固有スタイル --- */
@@ -1943,7 +1933,7 @@ a {
     /* 枠に合わせてきれいに収める */
     display: block;
     transition: transform 0.5s ease;
-    
+
 }
 
 /* カードにホバーした時に画像を拡大 */
@@ -2102,77 +2092,179 @@ a {
 }
 
 /* 右側：インフォパネル */
-.food-info-panel {
-    flex: 1;
-    background-color: rgba(0, 0, 0, 0.2);
-    /* 背景を少し暗くして文字を読みやすく */
-    padding: 30px;
+.food-marche__right {
+    background: rgba(0, 0, 0, 0.12);
+    padding: 28px;
 }
 
-.panel-sub {
-    font-size: 1.2rem;
-    opacity: 0.8;
+.food-marche__sub {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
 }
 
-.panel-main {
-    font-size: 2rem;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
+.food-marche__title {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 24px;
 }
 
-.shop-list {
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.shop-list li {
+.food-card-list {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.food-card {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.food-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.food-card__label {
+    display: inline-flex;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.shop-list .txt {
-    width: 70%;
-}
-
-.shop-list .name {
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.shop-list .desc {
-    font-size: 1rem;
-    opacity: 0.85;
-}
-
-.zone-tag {
-    background: #ebeaea;
+    justify-content: center;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid #ffffff;
     color: #e60012;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
 }
 
-/* ボタン：台形デザイン */
-.map-button {
-    display: block;
-    background: #ebeaea;
+.food-card__label--a,
+.food-card__label--b,
+.food-card__label--c {
+    background: transparent;
     color: #e60012;
+    background-color: #fff;
+}
+
+.food-card__title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.food-card__text {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.foodmap-btn-wrap {
+    margin-top: 28px;
     text-align: center;
-    padding: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1rem;
-    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-    transition: 0.3s;
 }
 
-.map-button:hover {
-    background: #1a1a1a;
-    color: #ebeaea;
+/* フードマップボタン */
+.foodmap-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    height: 52px;
+    padding: 0 32px;
+    background: transparent;
+    color: #e60012;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transform: skewX(-18deg);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.foodmap-btn span {
+    display: inline-block;
+    transform: skewX(18deg);
+}
+
+.foodmap-btn:hover {
+    opacity: 0.9;
+    transform: skewX(-18deg) translateY(-2px);
+}
+
+/* =========================
+    FOOD MAP MODAL
+========================= */
+.foodmap-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9999;
+}
+
+.foodmap-modal.is-active {
+    display: block;
+}
+
+.foodmap-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.foodmap-modal__content {
+    position: relative;
+    width: min(560px, calc(100% - 40px));
+    max-height: calc(100vh - 48px);
+    margin: 24px auto;
+    padding: 20px;
+    background: #ffffff;
+    overflow: auto;
+}
+
+.foodmap-modal__close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    color: #111111;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.foodmap-modal__header {
+    padding-right: 36px;
+    margin-bottom: 16px;
+}
+
+.foodmap-modal__title {
+    color: #111111;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.foodmap-modal__desc {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.foodmap-modal__img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /*FOOD&MARCHE responsive*/
@@ -2197,19 +2289,71 @@ a {
         width: 100%;
     }
 
-    .food-info-panel {
+    .food-marche__right {
+        padding: 20px 16px;
+    }
+
+    .food-marche__title {
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .food-card__title {
+        font-size: 22px;
+    }
+
+    .food-card__text {
+        font-size: 13px;
+    }
+
+    .foodmap-btn {
         width: 100%;
+        min-width: auto;
+        height: 50px;
+        margin-top: 22px;
     }
 
-    #food-marche .section-title {
-        font-size: 48px;
+    .foodmap-modal__content {
+        width: calc(100% - 20px);
+        max-height: calc(100vh - 20px);
+        margin: 10px auto;
+        padding: 14px;
+        border-radius: 10px;
     }
 
-    .shop-list .txt {
-        margin-right: 10px;
+    .foodmap-modal__header {
+        margin-bottom: 10px;
+        padding-right: 28px;
+    }
+
+    .foodmap-modal__title {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .foodmap-modal__desc {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .foodmap-modal__img {
+        width: 100%;
+        max-height: 72vh;
+        object-fit: contain;
+    }
+
+    .foodmap-modal__close {
+        top: 6px;
+        right: 8px;
+        font-size: 24px;
     }
 }
 
+body.is-foodmap-open .btn-left,
+body.is-foodmap-open .btn-right {
+    opacity: 0;
+    pointer-events: none;
+}
 
 
 /*NIGHT EVENT*/
@@ -2330,25 +2474,25 @@ a {
     }
 }
 
-
-
-
 /* 「メインページへ戻る」ボタン(左側表示）、「top-page」ボタン（右側表示） */
 /* --- 固定ナビゲーション：ベース --- */
 .fixed-navigation {
     position: fixed;
-    top: 19%; /* メインビジュアル付近で邪魔にならない高さ */
+    top: 19%;
+    /* メインビジュアル付近で邪魔にならない高さ */
     left: 0;
     width: 100%;
     z-index: 9999;
-    pointer-events: none; /* 親はクリックをスルー */
+    pointer-events: none;
+    /* 親はクリックをスルー */
     display: flex;
     justify-content: space-between;
 
     /* --- 初期状態：隠しておく --- */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px); /* 上からふわっと降りてくる演出 */
+    transform: translateY(-20px);
+    /* 上からふわっと降りてくる演出 */
     transition: all 0.5s ease;
 }
 
@@ -2361,7 +2505,14 @@ a {
 
 /* --- ボタン共通スタイル --- */
 .nav-btn {
-    pointer-events: auto; /* ボタンはクリック可能にする */
+    pointer-events: auto;
+    /* ボタン自体はクリック可能 */
+    width: 60px;
+    /* 80pxの余白に収める */
+    min-height: 160px;
+    /* 矢印と文字が被らないための最低限の高さ */
+    pointer-events: auto;
+    /* ボタンはクリック可能にする */
     width: 60px;
     min-height: 160px;
     background-color: rgba(26, 26, 26, 0.9);
@@ -2372,10 +2523,14 @@ a {
     font-weight: bold;
     text-align: center;
     transition: all 0.3s ease;
-    writing-mode: vertical-rl; /* 縦書き */
+    writing-mode: vertical-rl;
+    /* 縦書き */
     position: relative;
+
+    /* 文字を枠内の垂直中央に配置 */
     display: flex;
-    align-items: center; /* 垂直中央 */
+    align-items: center;
+    /* 垂直中央 */
     justify-content: center;
     letter-spacing: 0.1em;
     padding: 8px;
@@ -2387,116 +2542,114 @@ a {
     content: "";
     position: absolute;
     writing-mode: horizontal-tb;
+    /* 縦書きモードをリセットして向きを固定 */
     transition: 0.3s;
 }
 
-/* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
-
-.btn-left {
-
-    margin-left: 10px;
-
-    align-items: center;
-
+/* 矢印の「先端（くの字）」 */
+.nav-btn::before {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #e60012;
+    border-left: 2px solid #e60012;
 }
 
+/* 矢印の「棒（ライン）」 */
+.nav-btn::after {
+    background-color: #e60012;
+    width: 2px;
+    height: 40px;
+    /* 矢印の長さ */
+}
 
+/* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
+.btn-left {
+    margin-left: 10px;
+    align-items: center;
+}
 
 .btn-left span {
-
     transform: rotate(180deg);
-
 }
-
-
 
 /* 先端（くの字） */
 
 .btn-left::before {
-
-    top: 7.1%; /* ボタンの上端からの位置 */
-
+    top: 7.1%;
+    /* ボタンの上端からの位置 */
+    left: 15%;
+    /* ボタンの上端からの位置 */
     left: 28%;
-
     /* 重要：一度回転をリセットし、そこから左を向かせる */
-
     writing-mode: horizontal-tb;
-
     width: 10px;
-
     height: 10px;
-
     border-top: 2px solid #e60012;
-
     border-left: 2px solid #e60012;
-
     /* -45度回転させて左向きにする */
-
     transform: translateX(-50%) rotate(-45deg);
-
 }
-
-
 
 /* 棒（ライン） */
 
 .btn-left::after {
-
-    top: 10%; /* 先端の頂点と合わせる */
-
+    top: 10%;
+    /* 先端の頂点と合わせる */
+    left: 47%;
+    /* 先端の頂点と合わせる */
     left: 50%;
-
     writing-mode: horizontal-tb;
-
     background-color: #e60012;
-
+    width: 50px;
+    height: 2px;
+    /* お好みの長さに調整 */
     width: 36px;
-
-    height: 2px; /* お好みの長さに調整 */
-
+    height: 2px;
+    /* お好みの長さに調整 */
     transform: translateX(-50%);
-
 }
 
-
-
 /* --- 右側：TOP PAGE 個別設定（文字の左に上矢印） --- */
-
-/* 右側のTOP PAGEボタンを初期状態で隠す */
-
 .btn-right {
     margin-right: 10px;
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 /* 矢印（先端） */
 .btn-right::before {
-    content: ""; /* 念のため再定義 */
+    content: "";
+    /* 念のため再定義 */
     position: absolute;
     top: 30px;
     left: 15px;
-    width: 8px;   /* サイズが消えている場合は追加 */
-    height: 8px;  /* サイズが消えている場合は追加 */
+    width: 8px;
+    /* サイズが消えている場合は追加 */
+    height: 8px;
+    /* サイズが消えている場合は追加 */
     border-top: 2px solid #e60012;
     border-left: 2px solid #e60012;
-    transform: rotate(45deg); /* 上向き */
-    opacity: 1;   /* 確実に表示 */
+    transform: rotate(45deg);
+    /* 上向き */
+    opacity: 1;
+    /* 確実に表示 */
     visibility: visible;
 }
 
 /* 矢印（ライン） */
 .btn-right::after {
-    content: ""; /* 念のため再定義 */
+    content: "";
+    /* 念のため再定義 */
     position: absolute;
     top: 31px;
     left: 18px;
     width: 2px;
     height: 90px;
     background-color: #e60012;
-    opacity: 1;   /* 確実に表示 */
+    opacity: 1;
+    /* 確実に表示 */
     visibility: visible;
 }
 
@@ -2508,8 +2661,8 @@ a {
 }
 
 .nav-btn:hover::before {
-     border-color: #fff;
-    }
+    border-color: #fff;
+}
 
 .nav-btn:hover::after {
     background-color: #fff;
@@ -2530,15 +2683,19 @@ a {
 
     .nav-btn {
         top: 500px;
-        width: 32px; /* 少しだけ余裕を持たせる */
+        width: 32px;
+        /* 少しだけ余裕を持たせる */
         min-height: 120px;
         font-size: 0.7rem;
-        padding-top: 45px; /* 文字を下げて、上に矢印スペースを確保 */
-        align-items: flex-start; /* 文字の開始位置を上に揃える */
+        padding-top: 45px;
+        /* 文字を下げて、上に矢印スペースを確保 */
+        align-items: flex-start;
+        /* 文字の開始位置を上に揃える */
     }
 
     /* 矢印の共通リセット：中央配置を徹底 */
-    .nav-btn::before, .nav-btn::after {
+    .nav-btn::before,
+    .nav-btn::after {
         left: 50%;
         transform: translateX(-50%);
     }
@@ -2554,12 +2711,13 @@ a {
         height: 7px;
         left: 9px;
         /* 中央から左に回転 */
-        transform: translateX(-50%) rotate(-45deg); 
+        transform: translateX(-50%) rotate(-45deg);
     }
 
     .btn-left::after {
         top: 13px;
-        width: 20px; /* 棒を短く */
+        width: 20px;
+        /* 棒を短く */
         height: 2px;
         transform: translateX(-50%);
     }
@@ -2576,10 +2734,12 @@ a {
         /* 中央で上向きに回転 */
         transform: translateX(-50%) rotate(45deg);
     }
+
     .btn-right::after {
         top: 11px;
         width: 2px;
-        height: 25px; /* 縦の棒 */
+        height: 25px;
+        /* 縦の棒 */
         transform: translateX(-50%);
     }
 
