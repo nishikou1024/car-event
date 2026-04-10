@@ -784,13 +784,11 @@ a {
 }
 
 /*footer*/
-/* --- Footer Base --- */
 .footer {
-    background: #000000;
+    background: #000;
     border-top: 4px solid #ff0000;
-    padding: 60px 0 30px;
-    /* 少し余裕を持たせる */
-    color: #ffffff;
+    padding: 80px 0 30px;
+    color: #fff;
 }
 
 .footer__inner {
@@ -799,21 +797,22 @@ a {
     padding: 0 20px;
 }
 
-.footer__top {
+/* メインエリアを横並びに */
+.footer__main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 60px;
+    gap: 40px;
 }
 
-/* --- Brand & SNS --- */
+/* 左側：文章 */
 .footer__brand {
-    max-width: 350px;
+    flex: 1;
+    max-width: 450px;
 }
 
 .footer__logo-img {
     height: 40px;
-    /* ロゴのサイズ調整 */
     width: auto;
 }
 
@@ -824,128 +823,137 @@ a {
     margin-top: 24px;
 }
 
-/* SNS共通設定 */
-.footer__sns {
+/* 右側：SNSとリンクをまとめる */
+.footer__right {
     display: flex;
-    gap: 30px;
-    /* アイコン同士の間隔 */
-    margin-top: 32px;
+    flex-direction: column;
+    margin-right: 120px;
 }
 
+/* SNSエリア */
+.footer__sns-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.footer__sns-text {
+    margin-bottom: 15px;
+}
+
+.footer__sns-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer__sns-links .sns-label {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
+    font-style: italic;
+}
+
+/* --- SNS共通のホバー設定 --- */
 .sns-link {
     display: flex;
     flex-direction: column;
-    /* 縦並びにする */
     align-items: center;
-    /* 中央寄せ */
-    gap: 10px;
-    /* アイコンと文字の間隔 */
+    gap: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    /* 全てのプロパティに0.3秒の動きをつける */
+    transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
 }
 
-/* アイコンのサイズ */
-.sns-link i {
-    font-size: 24px;
-    color: #ffffff;
-    transition: color 0.3s ease;
-}
-
-/* ★カーレース風フォントの設定 */
-.sns-label {
-    color: #ffffff;
-    font-size: 0.7rem;
-    font-weight: bold;
-    /* 極太にして力強さを出す */
-    letter-spacing: 0.1em;
-    /* 文字間隔を広げて高級感を出す */
-    font-family: 'Arial Black', 'sans-serif';
-    /* 角張った太いフォント */
-    font-style: italic;
-    /* 斜体にしてスピード感を出す */
-    transition: color 0.3s ease;
-}
-
-/* --- ホバー演出 --- */
+/* ホバー時に上に3px浮かせる（全てのSNS共通） */
 .sns-link:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
 }
 
-/* YouTubeなら赤、LINEなら緑のように個別に光らせる */
-.sns-link.--x:hover i,
-.sns-link.--x:hover .sns-label {
-    color: #888888;
+/* アイコンにグロー効果（光の輪）を少し追加 */
+.sns-link:hover i {
+    filter: drop-shadow(0 0 8px currentColor);
 }
 
-.sns-link.--instagram:hover i,
-.sns-link.--instagram:hover .sns-label {
-    color: #e4405f;
-}
+/* --- 各SNS個別のカラー設定 --- */
 
-.sns-link.--youtube:hover i,
-.sns-link.--youtube:hover .sns-label {
-    color: #ff0000;
-}
-
+/* LINE: 緑 */
 .sns-link.--line:hover i,
 .sns-link.--line:hover .sns-label {
     color: #06c755;
 }
 
-/* 光の輪（グロー効果） */
-.sns-link:hover i {
-    filter: drop-shadow(0 0 8px currentColor);
+/* X (Twitter): グレー/ライトブルー */
+.sns-link.--x:hover i,
+.sns-link.--x:hover .sns-label {
+    color: #888888; /* もしくは X公式の黒/白に合わせて #fff */
 }
 
-/* --- Links Area --- */
-.footer__links {
-    display: flex;
-    gap: 80px;
-    margin-top: 68px;
+/* Instagram: グラデーションに近いピンク/赤 */
+.sns-link.--instagram:hover i,
+.sns-link.--instagram:hover .sns-label {
+    color: #e4405f;
 }
 
-.footer__col {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* YouTube: 赤 */
+.sns-link.--youtube:hover i,
+.sns-link.--youtube:hover .sns-label {
+    color: #ff0000;
 }
 
-.footer__col-title {
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: #888888;
-    /* 見出しは少し暗くしてメリハリを出す */
+/* 規約リンク */
+.footer__nav {
+    margin-top: 30px; /* SNSのタイトル行と合わせる微調整 */
+}
+
+.footer__nav-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 10px;
     letter-spacing: 0.1em;
-    margin-bottom: 8px;
 }
 
-.footer__col a {
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 700;
+.footer__nav-link {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
     text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s ease;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
 }
 
-.footer__col a:hover {
-    color: #f36969;
-    /* ホバーで赤く光る */
+.footer__nav-link:hover {
+    color: #e21414;
 }
 
-/* --- Bottom --- */
+/* 下部コピーライト */
 .footer__bottom {
-    margin-top: 50px;
+    margin-top: 60px;
     padding-top: 20px;
-    border-top: 1px solid #222222;
-    text-align: left;
+    border-top: 1px solid #222;
 }
 
 .footer__bottom p {
-    color: #666666;
+    color: #666;
     font-size: 10px;
 }
 
+/* スマホ対応（レスポンシブ） */
+@media (max-width: 768px) {
+    .footer__main {
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .footer__right {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer__nav {
+        margin-top: 0;
+    }
+}
 
 @media (max-width: 768px) {
     .header {
@@ -1625,10 +1633,12 @@ a {
     .mainvisual .label-line {
         margin-top: 30px;
         margin-left: 20px;
+        padding-left: 15px;
     }
 
     .mainvisual .label-line::before {
-        width: 160%;
+        width: 150%;
+        margin-left: 15px;
     }
 
     .tab-menu {
@@ -1914,7 +1924,7 @@ a {
 /* --- 画像エリア（左側） --- */
 #kids-family .photo {
     /* 画像の横幅を200pxに固定 */
-    flex: 0 0 200px;
+    flex: 0 0 220px;
     background: none;
     border: none;
     overflow: hidden;
@@ -2071,14 +2081,6 @@ a {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s;
-}
-
-.food-content .food-item:first-child img {
-    object-position: center;
-}
-
-.food-content .food-item:nth-child(2) img {
-    object-position: 38% center;
 }
 
 
@@ -2331,7 +2333,7 @@ a {
 /* --- 固定ナビゲーション：ベース --- */
 .fixed-navigation {
     position: fixed;
-    top: 30%;
+    top: 19%;
     left: 0;
     width: 100%;
 
@@ -2347,11 +2349,11 @@ a {
     width: 60px; /* 80pxの余白に収める */
     min-height: 160px; /* 矢印と文字が被らないための最低限の高さ */
     background-color: rgba(26, 26, 26, 0.9);
+    border: 1px solid #e60012;
     color: #ebeaea;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: bold;
-    border: 1px solid #e60012;
     text-align: center;
     transition: all 0.3s ease;
     writing-mode: vertical-rl; /* 縦書き */
@@ -2395,10 +2397,14 @@ a {
     align-items: center;
 }
 
+.btn-left span {
+    transform: rotate(180deg);
+}
+
 /* 先端（くの字） */
 .btn-left::before {
     top: 7.1%; /* ボタンの上端からの位置 */
-    left: 15%;
+    left: 28%;
     /* 重要：一度回転をリセットし、そこから左を向かせる */
     writing-mode: horizontal-tb;
     width: 10px;
@@ -2412,10 +2418,10 @@ a {
 /* 棒（ライン） */
 .btn-left::after {
     top: 10%; /* 先端の頂点と合わせる */
-    left: 47%;
+    left: 50%;
     writing-mode: horizontal-tb;
     background-color: #e60012;
-    width: 50px;
+    width: 36px;
     height: 2px; /* お好みの長さに調整 */
     transform: translateX(-50%);
 }
@@ -2453,6 +2459,7 @@ a {
 .nav-btn:hover {
     background-color: #e60012;
     color: #fff;
+    border: 1px solid #fff;
 }
 
 .nav-btn:hover::before {
@@ -2464,16 +2471,16 @@ a {
 }
 
 .btn-left:hover {
-    transform: translateX(5px);
+    transform: translateX(-3.5px);
 }
 
 .btn-right:hover {
-    transform: translateX(-5px);
+    transform: translateY(-8px);
 }
 
 @media screen and (max-width: 768px) {
     .fixed-navigation {
-        top: 50px;
+        top: 60px;
     }
 
     .nav-btn {
