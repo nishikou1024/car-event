@@ -227,3 +227,35 @@ document.addEventListener('click', function(e) {
         behavior: 'smooth'
     });
 }, true); // 第3引数を true にして、イベントのキャプチャ段階で捕まえるのがコツ
+
+/* =========================
+    8. フードマップモーダルの開閉
+========================= */
+
+const openFoodMapBtn = document.getElementById('openFoodMap');
+const foodMapModal = document.getElementById('foodMapModal');
+const closeFoodMapOverlay = document.getElementById('closeFoodMap');
+const closeFoodMapBtn = document.getElementById('closeFoodMapBtn');
+
+if (openFoodMapBtn && foodMapModal && closeFoodMapOverlay && closeFoodMapBtn) {
+    openFoodMapBtn.addEventListener('click', function () {
+        foodMapModal.classList.add('is-active');
+        document.body.classList.add('is-foodmap-open');
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closeFoodMap() {
+        foodMapModal.classList.remove('is-active');
+        document.body.classList.remove('is-foodmap-open');
+        document.body.style.overflow = '';
+    }
+
+    closeFoodMapOverlay.addEventListener('click', closeFoodMap);
+    closeFoodMapBtn.addEventListener('click', closeFoodMap);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeFoodMap();
+        }
+    });
+}

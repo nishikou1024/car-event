@@ -238,19 +238,20 @@ a {
 .fv__btn--line {
     background: #18c95d;
     color: #ffffff;
-    display: inline-block; /* 傾斜をかけるために必要 */
+    display: inline-block;
+    /* 傾斜をかけるために必要 */
     padding: 15px 40px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
 
     /* A. 最初から12度傾けておく */
-    transform: skewX(-12deg); 
+    transform: skewX(-12deg);
 }
 
 /* 文字を真っ直ぐに戻す設定 */
 .fv__btn--line .btn-inner {
-    transform: skewX(12deg); 
+    transform: skewX(12deg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1314,7 +1315,7 @@ a {
     }
 
     .schedule__title {
-        font-size: 34px;
+        font-size: 24px;
         margin-bottom: 40px;
     }
 
@@ -1371,6 +1372,11 @@ a {
 
     .sponsor {
         padding: 40px 0 60px;
+    }
+
+    .sponsor .section-title{
+        font-size: 24px;
+        font-weight: 700;
     }
 
     .sponsor__grid {
@@ -1929,7 +1935,7 @@ a {
     /* 枠に合わせてきれいに収める */
     display: block;
     transition: transform 0.5s ease;
-    
+
 }
 
 /* カードにホバーした時に画像を拡大 */
@@ -2096,77 +2102,179 @@ a {
 }
 
 /* 右側：インフォパネル */
-.food-info-panel {
-    flex: 1;
-    background-color: rgba(0, 0, 0, 0.2);
-    /* 背景を少し暗くして文字を読みやすく */
-    padding: 30px;
+.food-marche__right {
+    background: rgba(0, 0, 0, 0.12);
+    padding: 28px;
 }
 
-.panel-sub {
-    font-size: 1.2rem;
-    opacity: 0.8;
+.food-marche__sub {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
 }
 
-.panel-main {
-    font-size: 2rem;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
+.food-marche__title {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 24px;
 }
 
-.shop-list {
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.shop-list li {
+.food-card-list {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.food-card {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.food-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.food-card__label {
+    display: inline-flex;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.shop-list .txt {
-    width: 70%;
-}
-
-.shop-list .name {
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.shop-list .desc {
-    font-size: 1rem;
-    opacity: 0.85;
-}
-
-.zone-tag {
-    background: #ebeaea;
+    justify-content: center;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid #ffffff;
     color: #e60012;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
 }
 
-/* ボタン：台形デザイン */
-.map-button {
-    display: block;
-    background: #ebeaea;
+.food-card__label--a,
+.food-card__label--b,
+.food-card__label--c {
+    background: transparent;
     color: #e60012;
+    background-color: #fff;
+}
+
+.food-card__title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.food-card__text {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.foodmap-btn-wrap {
+    margin-top: 28px;
     text-align: center;
-    padding: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1rem;
-    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-    transition: 0.3s;
 }
 
-.map-button:hover {
-    background: #1a1a1a;
-    color: #ebeaea;
+/* フードマップボタン */
+.foodmap-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    height: 52px;
+    padding: 0 32px;
+    background: transparent;
+    color: #e60012;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transform: skewX(-18deg);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.foodmap-btn span {
+    display: inline-block;
+    transform: skewX(18deg);
+}
+
+.foodmap-btn:hover {
+    opacity: 0.9;
+    transform: skewX(-18deg) translateY(-2px);
+}
+
+/* =========================
+    FOOD MAP MODAL
+========================= */
+.foodmap-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9999;
+}
+
+.foodmap-modal.is-active {
+    display: block;
+}
+
+.foodmap-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.foodmap-modal__content {
+    position: relative;
+    width: min(560px, calc(100% - 40px));
+    max-height: calc(100vh - 48px);
+    margin: 24px auto;
+    padding: 20px;
+    background: #ffffff;
+    overflow: auto;
+}
+
+.foodmap-modal__close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    color: #111111;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.foodmap-modal__header {
+    padding-right: 36px;
+    margin-bottom: 16px;
+}
+
+.foodmap-modal__title {
+    color: #111111;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.foodmap-modal__desc {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.foodmap-modal__img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /*FOOD&MARCHE responsive*/
@@ -2191,19 +2299,71 @@ a {
         width: 100%;
     }
 
-    .food-info-panel {
+    .food-marche__right {
+        padding: 20px 16px;
+    }
+
+    .food-marche__title {
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .food-card__title {
+        font-size: 22px;
+    }
+
+    .food-card__text {
+        font-size: 13px;
+    }
+
+    .foodmap-btn {
         width: 100%;
+        min-width: auto;
+        height: 50px;
+        margin-top: 22px;
     }
 
-    #food-marche .section-title {
-        font-size: 48px;
+    .foodmap-modal__content {
+        width: calc(100% - 20px);
+        max-height: calc(100vh - 20px);
+        margin: 10px auto;
+        padding: 14px;
+        border-radius: 10px;
     }
 
-    .shop-list .txt {
-        margin-right: 10px;
+    .foodmap-modal__header {
+        margin-bottom: 10px;
+        padding-right: 28px;
+    }
+
+    .foodmap-modal__title {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+
+    .foodmap-modal__desc {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .foodmap-modal__img {
+        width: 100%;
+        max-height: 72vh;
+        object-fit: contain;
+    }
+
+    .foodmap-modal__close {
+        top: 6px;
+        right: 8px;
+        font-size: 24px;
     }
 }
 
+body.is-foodmap-open .btn-left,
+body.is-foodmap-open .btn-right {
+    opacity: 0;
+    pointer-events: none;
+}
 
 
 /*NIGHT EVENT*/
@@ -2336,16 +2496,20 @@ a {
     width: 100%;
 
     z-index: 9999;
-    pointer-events: none; /* 親要素はクリックを透過 */
+    pointer-events: none;
+    /* 親要素はクリックを透過 */
     display: flex;
     justify-content: space-between;
 }
 
 /* --- ボタン共通スタイル --- */
 .nav-btn {
-    pointer-events: auto; /* ボタン自体はクリック可能 */
-    width: 60px; /* 80pxの余白に収める */
-    min-height: 160px; /* 矢印と文字が被らないための最低限の高さ */
+    pointer-events: auto;
+    /* ボタン自体はクリック可能 */
+    width: 60px;
+    /* 80pxの余白に収める */
+    min-height: 160px;
+    /* 矢印と文字が被らないための最低限の高さ */
     background-color: rgba(26, 26, 26, 0.9);
     color: #ebeaea;
     text-decoration: none;
@@ -2354,9 +2518,10 @@ a {
     border: 1px solid #e60012;
     text-align: center;
     transition: all 0.3s ease;
-    writing-mode: vertical-rl; /* 縦書き */
+    writing-mode: vertical-rl;
+    /* 縦書き */
     position: relative;
-    
+
     /* 文字を枠内の垂直中央に配置 */
     display: flex;
     align-items: top;
@@ -2370,7 +2535,8 @@ a {
 .nav-btn::after {
     content: "";
     position: absolute;
-    writing-mode: horizontal-tb; /* 縦書きモードをリセットして向きを固定 */
+    writing-mode: horizontal-tb;
+    /* 縦書きモードをリセットして向きを固定 */
     transition: 0.3s;
 }
 
@@ -2386,7 +2552,8 @@ a {
 .nav-btn::after {
     background-color: #e60012;
     width: 2px;
-    height: 40px; /* 矢印の長さ */
+    height: 40px;
+    /* 矢印の長さ */
 }
 
 /* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
@@ -2397,7 +2564,8 @@ a {
 
 /* 先端（くの字） */
 .btn-left::before {
-    top: 7.1%; /* ボタンの上端からの位置 */
+    top: 7.1%;
+    /* ボタンの上端からの位置 */
     left: 15%;
     /* 重要：一度回転をリセットし、そこから左を向かせる */
     writing-mode: horizontal-tb;
@@ -2411,12 +2579,14 @@ a {
 
 /* 棒（ライン） */
 .btn-left::after {
-    top: 10%; /* 先端の頂点と合わせる */
+    top: 10%;
+    /* 先端の頂点と合わせる */
     left: 47%;
     writing-mode: horizontal-tb;
     background-color: #e60012;
     width: 50px;
-    height: 2px; /* お好みの長さに調整 */
+    height: 2px;
+    /* お好みの長さに調整 */
     transform: translateX(-50%);
 }
 
@@ -2424,28 +2594,37 @@ a {
 /* 右側のTOP PAGEボタンを初期状態で隠す */
 .btn-right {
     margin-right: 10px;
-    opacity: 0;           /* 透明にする */
-    visibility: hidden;  /* クリックも無効化 */
-    transform: translateX(20px); /* 少し右にずらしておく */
-    transition: all 0.5s ease;   /* ふわっと出すためのアニメーション */
+    opacity: 0;
+    /* 透明にする */
+    visibility: hidden;
+    /* クリックも無効化 */
+    transform: translateX(20px);
+    /* 少し右にずらしておく */
+    transition: all 0.5s ease;
+    /* ふわっと出すためのアニメーション */
 }
 
 /* JSでこのクラスがついたら表示する */
 .btn-right.is-visible {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0); /* 定位置に戻る */
+    transform: translateX(0);
+    /* 定位置に戻る */
 }
 
 .btn-right::before {
-    top: 30px; /* 文字の左上付近に配置 */
-    left: 15px; /* 文字の左側（隙間） */
-    transform: rotate(45deg); /* 上向き */
+    top: 30px;
+    /* 文字の左上付近に配置 */
+    left: 15px;
+    /* 文字の左側（隙間） */
+    transform: rotate(45deg);
+    /* 上向き */
 }
 
 .btn-right::after {
     top: 31px;
-    left: 18px; /* 先端の頂点と合わせる */
+    left: 18px;
+    /* 先端の頂点と合わせる */
     height: 90px;
 }
 
@@ -2456,8 +2635,8 @@ a {
 }
 
 .nav-btn:hover::before {
-     border-color: #fff;
-    }
+    border-color: #fff;
+}
 
 .nav-btn:hover::after {
     background-color: #fff;
@@ -2478,15 +2657,19 @@ a {
 
     .nav-btn {
         top: 10px;
-        width: 32px; /* 少しだけ余裕を持たせる */
+        width: 32px;
+        /* 少しだけ余裕を持たせる */
         min-height: 120px;
         font-size: 0.7rem;
-        padding-top: 45px; /* 文字を下げて、上に矢印スペースを確保 */
-        align-items: flex-start; /* 文字の開始位置を上に揃える */
+        padding-top: 45px;
+        /* 文字を下げて、上に矢印スペースを確保 */
+        align-items: flex-start;
+        /* 文字の開始位置を上に揃える */
     }
 
     /* 矢印の共通リセット：中央配置を徹底 */
-    .nav-btn::before, .nav-btn::after {
+    .nav-btn::before,
+    .nav-btn::after {
         left: 50%;
         transform: translateX(-50%);
     }
@@ -2502,12 +2685,13 @@ a {
         height: 7px;
         left: 9px;
         /* 中央から左に回転 */
-        transform: translateX(-50%) rotate(-45deg); 
+        transform: translateX(-50%) rotate(-45deg);
     }
 
     .btn-left::after {
         top: 13px;
-        width: 20px; /* 棒を短く */
+        width: 20px;
+        /* 棒を短く */
         height: 2px;
         transform: translateX(-50%);
     }
@@ -2524,10 +2708,12 @@ a {
         /* 中央で上向きに回転 */
         transform: translateX(-50%) rotate(45deg);
     }
+
     .btn-right::after {
         top: 11px;
         width: 2px;
-        height: 25px; /* 縦の棒 */
+        height: 25px;
+        /* 縦の棒 */
         transform: translateX(-50%);
     }
 
