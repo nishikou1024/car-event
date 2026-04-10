@@ -1301,7 +1301,6 @@ a {
         text-align: center;
     }
 
-
     .access__info {
         grid-template-columns: 1fr;
     }
@@ -1403,10 +1402,8 @@ a {
         display: flex;
         justify-content: center;
         align-items: center;
-
         padding: 16px;
         border-radius: 8px;
-
         background: rgba(255, 255, 255, 0.03);
         transition: 0.3s;
     }
@@ -1441,8 +1438,6 @@ a {
 
 
 /*----↓↓Takahiroが入力したcss(イベントページ)-----*/
-
-
 /*wrapper共通*/
 .wrapper {
     width: 100%;
@@ -1450,7 +1445,6 @@ a {
     padding: 80px;
     box-sizing: border-box;
 }
-
 
 .section-header {
     margin-bottom: 40px;
@@ -1478,7 +1472,6 @@ a {
     background-color: #e60012;
     /* 基本は赤い線 */
 }
-
 
 /* --- メインビジュアル --- */
 .mainvisual {
@@ -1536,8 +1529,6 @@ a {
     z-index: -1;
 
 }
-
-
 
 .top-title {
     font-family: 'Oswald', sans-serif;
@@ -1689,7 +1680,6 @@ a {
     }
 }
 
-
 /* --- タブ共通：アクティブスタイル --- */
 .tab-menu a.active {
     border-bottom: 2px solid #000;
@@ -1721,8 +1711,6 @@ a {
     /* セクション自体のpaddingはwrapperで行うため0に */
     font-family: "Noto Sans JP", sans-serif;
 }
-
-
 
 #gr-area .label-line {
     background: none;
@@ -1860,14 +1848,7 @@ a {
         display: flex;
         flex-direction: column;
     }
-
-
 }
-
-
-
-
-
 
 /*KIDS&FAMILY*/
 /* --- KIDS & FAMILY（白背景）の固有スタイル --- */
@@ -2493,9 +2474,6 @@ body.is-foodmap-open .btn-right {
     }
 }
 
-
-
-
 /* 「メインページへ戻る」ボタン(左側表示）、「top-page」ボタン（右側表示） */
 /* --- 固定ナビゲーション：ベース --- */
 .fixed-navigation {
@@ -2584,21 +2562,15 @@ body.is-foodmap-open .btn-right {
     /* 矢印の長さ */
 }
 
-
 /* --- 左側：MAIN PAGE 個別設定（文字の上に左矢印） --- */
-
 .btn-left {
     margin-left: 10px;
     align-items: center;
 }
 
-
-
 .btn-left span {
     transform: rotate(180deg);
 }
-
-
 
 /* 先端（くの字） */
 
@@ -2606,7 +2578,6 @@ body.is-foodmap-open .btn-right {
     top: 7.1%;
     /* ボタンの上端からの位置 */
     left: 15%;
-    top: 7.1%;
     /* ボタンの上端からの位置 */
     left: 28%;
     /* 重要：一度回転をリセットし、そこから左を向かせる */
@@ -2615,11 +2586,8 @@ body.is-foodmap-open .btn-right {
     height: 10px;
     border-top: 2px solid #e60012;
     border-left: 2px solid #e60012;
-
     /* -45度回転させて左向きにする */
-
     transform: translateX(-50%) rotate(-45deg);
-
 }
 
 /* 棒（ライン） */
@@ -2628,7 +2596,6 @@ body.is-foodmap-open .btn-right {
     top: 10%;
     /* 先端の頂点と合わせる */
     left: 47%;
-    top: 10%;
     /* 先端の頂点と合わせる */
     left: 50%;
     writing-mode: horizontal-tb;
@@ -2642,30 +2609,9 @@ body.is-foodmap-open .btn-right {
     transform: translateX(-50%);
 }
 
-
-
 /* --- 右側：TOP PAGE 個別設定（文字の左に上矢印） --- */
-
-/* 右側のTOP PAGEボタンを初期状態で隠す */
-
 .btn-right {
     margin-right: 10px;
-    opacity: 0;
-    /* 透明にする */
-    visibility: hidden;
-    /* クリックも無効化 */
-    transform: translateX(20px);
-    /* 少し右にずらしておく */
-    transition: all 0.5s ease;
-    /* ふわっと出すためのアニメーション */
-}
-
-/* JSでこのクラスがついたら表示する */
-.btn-right.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-    /* 定位置に戻る */
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
@@ -2674,12 +2620,6 @@ body.is-foodmap-open .btn-right {
 
 /* 矢印（先端） */
 .btn-right::before {
-    top: 30px;
-    /* 文字の左上付近に配置 */
-    left: 15px;
-    /* 文字の左側（隙間） */
-    transform: rotate(45deg);
-    /* 上向き */
     content: "";
     /* 念のため再定義 */
     position: absolute;
@@ -2705,7 +2645,6 @@ body.is-foodmap-open .btn-right {
     position: absolute;
     top: 31px;
     left: 18px;
-    /* 先端の頂点と合わせる */
     width: 2px;
     height: 90px;
     background-color: #e60012;
@@ -2743,9 +2682,6 @@ body.is-foodmap-open .btn-right {
     }
 
     .nav-btn {
-        top: 10px;
-        width: 32px;
-        /* 少しだけ余裕を持たせる */
         top: 500px;
         width: 32px;
         /* 少しだけ余裕を持たせる */
