@@ -2749,3 +2749,307 @@ body.is-foodmap-open .btn-right {
         padding-right: 32px;
     }
 }
+
+/* =========================
+    VENUE MAP
+========================= */
+
+.venue-map__title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-home-inline {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+
+    color: #fff;
+    text-decoration: none;
+
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(0,0,0,0.4);
+
+    transition: 0.3s;
+}
+
+.back-home-inline:hover {
+    background: #ff0000;
+    border-color: #ff0000;
+}
+
+
+.venue-map {
+    background: #000000;
+    padding: 100px 0;
+}
+
+.venue-map__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.venue-map__header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.venue-map__board {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.venue-map__content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px;
+    min-height: calc(100vh - 140px);
+}
+
+.venue-map__image-wrap {
+    position: sticky;
+    top: 20px;
+    width: 58%;
+    flex-shrink: 0;
+    max-height: calc(100vh - 180px);
+    overflow: hidden;
+    background: #111111;
+}
+
+.venue-map__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 180px);
+    object-fit: contain;
+    filter: brightness(0.88) contrast(1.08);
+}
+
+/* =========================
+    マップ上アイコン
+========================= */
+.venue-pin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.46);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.65));
+}
+
+.venue-pin img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.95));
+}
+
+.venue-pin:hover,
+.venue-pin.is-active {
+    transform: scale(1.12);
+    background: rgba(230, 0, 18, 0.92);
+}
+
+/* フード＆グッズの2アイコン */
+.venue-pin__icons {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.venue-pin__icons img {
+    position: absolute;
+    object-fit: contain;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.95));
+}
+
+.venue-pin__icons img:first-child {
+    top: 2px;
+    left: 2px;
+    width: 70%;
+    height: 70%;
+}
+
+.venue-pin__icons img:last-child {
+    right: 1px;
+    bottom: 1px;
+    width: 56%;
+    height: 56%;
+}
+
+/* ピン位置 */
+.venue-pin--event {
+    top: 36%;
+    left: 50%;
+}
+
+.venue-pin--toilet {
+    top: 46%;
+    left: 38%;
+}
+
+.venue-pin--info {
+    top: 40%;
+    left: 58%;
+}
+
+.venue-pin--aid {
+    top: 37%;
+    left: 42%;
+}
+
+.venue-pin--parking {
+    top: 67%;
+    left: 58%;
+}
+
+.venue-pin--foodgoods {
+    top: 54%;
+    left: 42%;
+}
+
+.venue-pin--nursing {
+    top: 53%;
+    left: 53%;
+}
+
+.venue-pin--wifi {
+    top: 19%;
+    left: 41%;
+}
+
+/* =========================
+    右側リスト
+========================= */
+.venue-map__guide {
+    width: 42%;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    padding: 4px 4px 4px 0;
+}
+
+.venue-map__guide-title {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+}
+
+.venue-map__guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 14px;
+}
+
+.guide-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.guide-item:hover,
+.guide-item.is-active {
+    background: rgba(230, 0, 18, 0.12);
+    border-color: rgba(230, 0, 18, 0.5);
+    transform: translateY(-1px);
+}
+
+.guide-item__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.guide-item__text {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+/* =========================
+    SP
+========================= */
+@media (max-width: 767px) {
+
+    .back-home {
+        top: 12px;
+        left: 12px;
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .venue-map {
+        padding: 72px 0;
+    }
+
+    .venue-map__inner {
+        padding: 0 16px;
+    }
+
+    .venue-map__header {
+        margin-bottom: 24px;
+    }
+
+    .venue-map__content {
+        display: block;
+        padding: 14px;
+    }
+
+    .venue-map__image-wrap {
+        position: relative;
+        top: auto;
+        width: 100%;
+        margin-bottom: 18px;
+    }
+
+    .venue-map__guide {
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .venue-map__guide-grid {
+        grid-template-columns: 2,1fr;
+        gap: 10px 12px;
+    }
+
+    .venue-pin {
+        width: 20px;
+        height: 20px;
+    }
+
+    .guide-item {
+        gap: 8px;
+        padding: 10px 8px;
+    }
+
+    .guide-item__icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .guide-item__text {
+        font-size: 13px;
+    }
+}
