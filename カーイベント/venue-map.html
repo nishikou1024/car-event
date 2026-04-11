@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MLFWZH7D');</script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>GR YARIS 100</title>
+</head>
+
+<body>
+
+
+
+    <main class="venue-map" id="venue-map">
+        <div class="venue-map__inner">
+            <div class="venue-map__header">
+                <div class="venue-map__title-row">
+                    <div>
+                        <p class="section-label">VENUE GUIDE</p>
+                        <h2 class="section-title section-title--white">会場マップ</h2>
+                    </div>
+
+                    <a href="index.html" class="back-home-inline">
+                        ← TOPへ
+                    </a>
+                </div>
+            </div>
+            <div class="venue-map__board">
+                <div class="venue-map__content">
+
+                    <div class="venue-map__image-wrap">
+                        <img src="img/venue-map-base.jpg" alt="会場マップ" class="venue-map__image">
+
+                        <button class="venue-pin venue-pin--event" data-target="event" type="button"
+                            aria-label="イベント会場">
+                            <img src="img/icon-event-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--toilet" data-target="toilet" type="button"
+                            aria-label="お手洗い">
+                            <img src="img/icon-toilet-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--info" data-target="info" type="button" aria-label="案内所">
+                            <img src="img/icon-info-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--aid" data-target="aid" type="button" aria-label="救護室">
+                            <img src="img/icon-aid-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--parking" data-target="parking" type="button"
+                            aria-label="一般駐車場">
+                            <img src="img/icon-parking-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--foodgoods" data-target="foodgoods" type="button"
+                            aria-label="フード＆グッズエリア">
+                            <span class="venue-pin__icons">
+                                <img src="img/icon-food-white.png" alt="">
+                                <img src="img/icon-bag-white.png" alt="">
+                            </span>
+                        </button>
+
+                        <button class="venue-pin venue-pin--nursing" data-target="nursing" type="button"
+                            aria-label="授乳室">
+                            <img src="img/icon-nursing-white.png" alt="">
+                        </button>
+
+                        <button class="venue-pin venue-pin--wifi" data-target="wifi" type="button" aria-label="無料Wi-Fi">
+                            <img src="img/icon-wifi-white.png" alt="">
+                        </button>
+                    </div>
+
+                    <div class="venue-map__guide">
+                        <p class="venue-map__guide-title">FACILITY GUIDE / 施設案内</p>
+
+                        <div class="venue-map__guide-grid">
+                            <button class="guide-item" data-target="toilet" type="button">
+                                <img src="img/icon-toilet-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">お手洗い</span>
+                            </button>
+
+                            <button class="guide-item" data-target="event" type="button">
+                                <img src="img/icon-event-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">イベント会場</span>
+                            </button>
+
+                            <button class="guide-item" data-target="info" type="button">
+                                <img src="img/icon-info-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">案内所</span>
+                            </button>
+
+                            <button class="guide-item" data-target="aid" type="button">
+                                <img src="img/icon-aid-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">救護室</span>
+                            </button>
+
+                            <button class="guide-item" data-target="parking" type="button">
+                                <img src="img/icon-parking-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">一般駐車場</span>
+                            </button>
+
+                            <button class="guide-item" data-target="foodgoods" type="button">
+                                <img src="img/icon-food-red.png" alt="" class="guide-item__icon">
+                                <img src="img/icon-bag-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">フード＆グッズエリア</span>
+                            </button>
+
+                            <button class="guide-item" data-target="nursing" type="button">
+                                <img src="img/icon-nursing-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">授乳室</span>
+                            </button>
+
+                            <button class="guide-item" data-target="wifi" type="button">
+                                <img src="img/icon-wifi-red.png" alt="" class="guide-item__icon">
+                                <span class="guide-item__text">無料Wi-Fi</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer__inner">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="img/logo.png" alt="GR YARIS 100" class="footer__logo-img">
+                    </a>
+                    <p class="footer__text">
+                        地域、クルマ、そして未来を繋ぐ。<br>
+                        モータースポーツの新しい景色をここから創ります。
+                    </p>
+                </div>
+
+                <div class="footer__right">
+                    <div class="footer__sns">
+                        <p class="footer__sns-title">OFFICIAL SNS</p>
+                        <p class="footer__sns-text">会場の熱気を、リアルタイムで。公式SNSで最新情報をチェック。</p>
+                        <div class="footer__sns-links">
+                            <a href="https://line.me" class="sns-link --line" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-line"></i>
+                                <span class="sns-label">LINE</span>
+                            </a>
+                            <a href="https://x.com" class="sns-link --x" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-x-twitter"></i>
+                                <span class="sns-label">X</span>
+                            </a>
+                            <a href="https://instagram.com" class="sns-link --instagram" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fa-brands fa-instagram"></i>
+                                <span class="sns-label">INSTAGRAM</span>
+                            </a>
+                            <a href="https://youtube.com" class="sns-link --youtube" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fa-brands fa-youtube"></i>
+                                <span class="sns-label">YOUTUBE</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer__nav">
+                        <p class="footer__nav-title">LEGAL</p>
+                        <a href="#" class="footer__nav-link">TERMS OF SERVICE</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© 2024 GR YARIS 100 EVENT EXECUTIVE COMMITTEE. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

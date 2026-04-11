@@ -257,3 +257,36 @@ if (openFoodMapBtn && foodMapModal && closeFoodMapOverlay && closeFoodMapBtn) {
     });
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const guideItems = document.querySelectorAll('.guide-item');
+    const venuePins = document.querySelectorAll('.venue-pin');
+
+    if (guideItems.length && venuePins.length) {
+        function activateTarget(target) {
+            guideItems.forEach((btn) => btn.classList.remove('is-active'));
+            venuePins.forEach((pin) => pin.classList.remove('is-active'));
+
+            const matchedGuide = document.querySelector('.guide-item[data-target="' + target + '"]');
+            const matchedPin = document.querySelector('.venue-pin[data-target="' + target + '"]');
+
+            if (matchedGuide) matchedGuide.classList.add('is-active');
+            if (matchedPin) matchedPin.classList.add('is-active');
+        }
+
+        guideItems.forEach((item) => {
+            item.addEventListener('click', function () {
+                activateTarget(this.dataset.target);
+            });
+        });
+
+        venuePins.forEach((pin) => {
+            pin.addEventListener('click', function () {
+                activateTarget(this.dataset.target);
+            });
+        });
+
+        activateTarget('foodgoods');
+    }
+});
